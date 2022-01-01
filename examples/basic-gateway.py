@@ -12,7 +12,6 @@ def on_success(event):
 @bot.event
 def on_message(event):
     message = nertivia4py.Message(event["message"]["messageID"], event["message"]["channelID"])
-    print(message.content)
 
     if message.content.startswith(prefix):
         command = message.content.split(" ")[0][1:]
