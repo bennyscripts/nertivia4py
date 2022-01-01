@@ -1,5 +1,6 @@
 # Nertivia4PY
-A Python wrapper for the Nertivia API
+A Python wrapper for the Nertivia API. 
+Support Nertivia server : https://nertivia.net/i/nertivia4py
 
 ### Install
 ```
