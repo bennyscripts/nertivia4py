@@ -64,8 +64,8 @@ repo.
 
 setup(
     name='nertivia4py',
-    packages=['nertivia4py'],
-    version='0.1',
+    packages=['nertivia4py', 'nertivia4py.gateway'],
+    version='0.3',
     license='MIT',
     description='A Python wrapper for the Nertivia API',
     long_description_content_type="text/markdown",
@@ -75,15 +75,5 @@ setup(
     url='https://github.com/bentettmar/nertivia4py',
     keywords=["nertivia", "api", "wrapper", "python",
               "bot", "nertivia.py", "nertivia4py"],
-    install_requires=["requests", '"python-socketio[client]"'],
-    classifiers=[
-        'Development Status :: 3 - Stable',
-        'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-    ],
+    install_requires=["requests", 'socketio-client'],
 )
