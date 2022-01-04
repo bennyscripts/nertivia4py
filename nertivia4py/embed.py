@@ -69,24 +69,6 @@ class Embed:
                     "src": url
                 }
             })
-            
-    def set_video(self, url):
-        self.videos += 1
-
-        if self.videos <= 1:
-            self.json["content"][1]["content"][1]["content"] += "\n** **"
-            
-            self.json["content"][1]["content"].append({
-                "tag": "video",
-                "styles": {
-                    "width": "100%",
-                    "overflow": "hidden",
-                    "borderRadius": "4px"
-                },
-                "attributes": {
-                    "src": url
-                }
-            })
 
     def set_footer(self, text, icon_url=""):
         self.footers += 1
