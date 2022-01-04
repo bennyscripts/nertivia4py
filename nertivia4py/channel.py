@@ -25,9 +25,12 @@ class Channel:
     def __str__(self):
         return self.name
 
-    def send(self, content, embed: Embed = None, buttons: list = None):
+    def send(self, content = "", embed: Embed = None, buttons: list = None):
         content = str(content)
-        body={"message": content}
+        body={}
+
+        if content != "":
+            body["message"] = content
 
         if embed != None:
             body["htmlEmbed"] = embed.json
