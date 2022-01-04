@@ -25,9 +25,19 @@ class Message:
                 self.channel = channel.Channel(response.json()["channelID"])
 
             self.id = response.json()["messageID"]
-            if response.json()["message"] is not None: self.content = response.json()["message"]
-            if response.json()["created"] is not None: self.created = response.json()["created"]
-            self.creator = user.User(response.json()["creator"]["id"])
+            # check if response json has a key called message and if it does then set self.content to that value
+            try:
+                self.content = response.json()["message"]
+            except:
+                self.content = ""
+            try:
+                self.created = response.json()["created"]
+            except:
+                self.created = ""
+            try:
+                self.creator = user.User(response.json()["creator"]["id"])
+            except:
+                self.creator = None
 
         else:
             self.id = id
@@ -39,7 +49,7 @@ class Message:
     def __str__(self):
         return self.content
 
-    def reply(self, content:str, embed: embed.Embed = None, buttons: list = None):
+    def reply(self, content:str = "", embed: embed.Embed = None, buttons: list = None):
         body={"message": f"<m{self.id}>"+content}
         if embed != None:
             body["htmlEmbed"] = embed.json

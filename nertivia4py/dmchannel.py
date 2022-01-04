@@ -7,9 +7,11 @@ class DMChannel:
     def __init__(self, id): 
         self.id = id
 
-    def send(self, message, embed: Embed = None, buttons: list = None):
-        message = str(message)
-        body = {"message": message}
+    def send(self, content = "", embed: Embed = None, buttons: list = None):
+        content = str(content)
+        body = {}
+        if content != "":
+            body["message"] = content
         if embed is not None:
             body["htmlEmbed"] = embed.json
         if buttons != None:
