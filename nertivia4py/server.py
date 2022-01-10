@@ -4,6 +4,7 @@ import socketio
 import ast
 import json
 
+from . import gateway
 from . import channel
 from .user import User
 from .extra import Extra
@@ -126,7 +127,7 @@ class Server:
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on("success", self.getMembersHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self.getMembersHandler)
 
         while len(self.members) == 0:
             pass
@@ -153,7 +154,7 @@ class Server:
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on("success", self.getChannelsHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self.getChannelsHandler)
 
         while len(self.channels) == 0:
             pass

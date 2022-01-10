@@ -13,7 +13,7 @@ from .events import Events
 from ..extra import Extra
 from ..user import User
 from ..message import Message
-from ..nertivia import Nertivia
+from .. import nertivia
 
 class Client:
     def __init__(self, command_prefix, commands_path="", debug=False):
@@ -41,7 +41,7 @@ class Client:
     def run(self, token):
         self.token = token
         # self.user = User(response.json()["user"]["id"], response.json()["user"]["username"], response.json()["user"]["tag"], response.json()["user"]["avatar"], response.json()["user"]["banner"], response.json()["user"]["created"])
-        self.user = Nertivia(token)
+        self.user = nertivia.Nertivia(token)
         Extra.setauthtoken(token)
         self.socket.connect(self.socketIp, namespaces=["/"], transports=["websocket"])
         self.socket.emit("authentication", {"token": token})

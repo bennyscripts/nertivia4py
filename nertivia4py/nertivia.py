@@ -7,6 +7,7 @@ from .server import Server
 from .user import User
 from .bot import Bot
 from .extra import Extra
+from . import gateway
 
 class Nertivia:
     def __init__(self, token):
@@ -70,7 +71,7 @@ class Nertivia:
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on("success", self.getServersHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self.getServersHandler)
 
         while len(self.servers) == 0:
             pass
