@@ -3,7 +3,7 @@ import nertivia4py
 token = "TOKEN_HERE"
 prefix = "!"
 
-bot = nertivia4py.gateway.Client(prefix)
+bot = nertivia4py.Bot(prefix)
 
 @bot.event
 def on_success(event):
