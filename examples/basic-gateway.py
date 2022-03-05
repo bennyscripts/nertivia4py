@@ -13,8 +13,4 @@ def on_success(event):
 def ping_command(message, args):
     message.reply("Pong!")
 
-@bot.command(name="echo", description="Make the user say something.", usage="<text>")
-def echo_command(message, args):
-    message.channel.send(args[0])
-
 bot.run(token)
