@@ -7,7 +7,9 @@ import base64
 import os
 import shlex
 import datetime
+import inspect
 
+from .command import Command
 from .events import Events
 
 from ..extra import Extra
@@ -16,25 +18,15 @@ from ..message import Message
 from .. import nertivia
 
 class Client:
-    def __init__(self, command_prefix, commands_path="", debug=False):
+    def __init__(self, command_prefix, debug=False):
         self.token = ""
         self.socket = socketio.Client(engineio_logger=False, logger=debug)
         self.socketIp = "https://nertivia.net/"
         self.headers = {"Authorization": self.token, "content-type": "application/json"}
         self.user = ""
         self.start_time = datetime.datetime.now()
-        self.command_paths = commands_path
         self.command_prefix = command_prefix
         self.commands = []
-
-        if self.command_paths != "":
-            for file in os.listdir(self.command_paths):
-                if file.endswith(".py"):
-                    if file.replace(".py", "") in self.commands:
-                        continue
-
-                    if self.checkIfCommand(file.replace(".py", "")):
-                        self.commands.append(self.getCommand(file.replace(".py", "")))
 
         Extra.setauthtoken(self.token)    
 
@@ -48,7 +40,7 @@ class Client:
         self.socket.wait()
         self.start_time = datetime.datetime.now()
 
-    def parseMessage(self, message):
+    def parse_message(self, message):
         command = message.content.replace(self.command_prefix, "")
         args = shlex.split(command)
         command = args[0]
@@ -56,43 +48,20 @@ class Client:
 
         return command, args
 
-    def executeCommand(self, path, context, args):
-        paths = path.split(".")
+    def _command_event_handler(self, event):
+        message = Message(event["message"]["messageID"], event["message"]["channelId"])
 
-        commandmodule = importlib.import_module(path)
-        moduleName = commandmodule.__name__.removeprefix(paths[0] + ".")
-        moduleName = moduleName[0].upper() + moduleName[1:]
-        
-        class_ = getattr(commandmodule, moduleName)
-        instance = class_(self)
-        instance.command(context, args)
+        if message.content.startswith(self.command_prefix):
+            cmd, args = self.parse_message(message)
+            for command in self.commands:
+                if command.name == cmd:
+                    callback = command.get_callback()
+                    callback(message, args)
 
-    def checkIfCommand(self, command):
-        if not os.path.exists(self.command_paths + "/" + command + ".py"): 
-            return False
+    def register_command(self, name: str, callback: callable):
+        self.commands.append(Command(name, callback))
 
-        commandmodule = importlib.import_module(self.command_paths + "." + command)
-        moduleName = commandmodule.__name__.removeprefix(self.command_paths + ".")
-        moduleName = moduleName[0].upper() + moduleName[1:]
-
-        class_ = getattr(commandmodule, moduleName)
-        instance = class_(self)
-        func = getattr(instance, "command")
-
-        if callable(func):
-            return True
-
-        return False
-
-    def getCommand(self, command):
-        commandmodule = importlib.import_module(self.command_paths + "." + command)
-        moduleName = commandmodule.__name__.removeprefix(self.command_paths + ".")
-        moduleName = moduleName[0].upper() + moduleName[1:]
-
-        class_ = getattr(commandmodule, moduleName)
-        instance = class_(self)
-
-        return instance
+        self.socket.on("message:created", self._command_event_handler)
 
     def event(self, *args):
         eventname = args[0].__name__
@@ -103,3 +72,4 @@ class Client:
             for key, value in event.items():
                 if key == eventname:
                     self.socket.on(value, args[0])
+        
