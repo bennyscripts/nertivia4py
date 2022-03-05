@@ -7,28 +7,14 @@ Support Nertivia server : https://nertivia.net/i/nertivia4py
 > pip install nertivia4py
 > ```
 
-> ### Examples
-> Basic example for just controlling the API step by step.  
-> ```python
-> import nertivia4py
-> 
-> channel_id = 123
-> token = "TOKEN_HERE"
-> 
-> bot = nertivia4py.Nertivia(token)
-> channel = bot.get_channel(channel_id)
-> 
-> channel.send("Hello World!")
-> ``` 
-> 
-> Basic example for connecting to the gateway.  
+> ### Example 
 > ```python
 > import nertivia4py
 > 
 > token = "TOKEN_HERE"
 > prefix = "!"
 > 
-> bot = nertivia4py.gateway.Client(prefix)
+> bot = nertivia4py.Bot(prefix)
 > 
 > @bot.event
 > def on_success(event):
