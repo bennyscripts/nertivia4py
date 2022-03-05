@@ -1,3 +1,4 @@
+from typing import Type
 import socketio
 import shlex
 
@@ -7,6 +8,7 @@ from . import command
 from .. import nertivia
 from .. import extra
 from .. import message
+from .. import exceptions
 
 class Client:
     def __init__(self, command_prefix, debug=False) -> None:
@@ -43,7 +45,13 @@ class Client:
             for cmd in self.commands:
                 if cmd.name == command or command in cmd.aliases:
                     callback = cmd.get_callback()
-                    callback(msg, args)
+
+                    try:
+                        callback(msg, args)
+                    except TypeError:
+                        callback(msg)
+                    except Exception as e:
+                        raise exceptions.CommandError(e)
 
     def event(self, *args):
         eventname = args[0].__name__
@@ -61,6 +69,13 @@ class Client:
             command_description = kwargs["description"] if "description" in kwargs else "No description provided."
             command_usage = kwargs["usage"] if "usage" in kwargs else ""
             command_aliases = kwargs["aliases"] if "aliases" in kwargs else []
+
+            for cmd in self.commands:
+                if command_name in command_aliases:
+                    raise ValueError("Command name and aliases cannot be the same.")
+
+                if cmd.name == command_name:
+                    raise exceptions.CommandAlreadyExists("Command name already exists.")
 
             command_callback = func
 
