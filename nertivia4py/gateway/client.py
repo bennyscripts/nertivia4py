@@ -65,7 +65,7 @@ class Client:
             command_callback = func
 
             self.commands.append(command.Command(command_name, command_description, command_usage, command_aliases, command_callback))
-            self.socket.on("message:created", self._command_event_handler)
+            self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
 
             return func
         return decorator
