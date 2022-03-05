@@ -4,20 +4,21 @@ from . import message
 from . import extra
 from . import embed
 from . import user
+from . import server
 
-class Channel:
+class TextChannel:
     def __init__(self, id, name="", server_id="") -> None:
         if name == "" or server_id == "":
             response = requests.get(f"https://nertivia.net/api/channels/{id}", headers={"authorization": extra.Extra.getauthtoken()})
 
             self.id = response.json()["channelId"]
             self.name = response.json()["name"]
-            self.server_id = response.json()["server_id"]
+            self.server = server.Server(response.json()["server_id"])
         
         else:
             self.id = id
             self.name = name
-            self.server_id = server_id
+            self.server = server.Server(server_id)
 
     def __str__(self) -> str:
         return self.name
@@ -108,5 +109,3 @@ class Channel:
         return None
 
     send_message = send
-    edit_channel = edit
-    delete_channel = delete

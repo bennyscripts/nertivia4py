@@ -121,9 +121,9 @@ class User:
             }
         )
 
-        dmchannel = dmchannel.DMChannel(response.json()["channel"]["channelID"])
+        channel = dmchannel.DMChannel(response.json()["channel"]["channelId"])
         
-        return dmchannel.send(message, embed=embed)
+        return channel.send(message, embed=embed)
     
     send_message = dm
     send_dm = dm

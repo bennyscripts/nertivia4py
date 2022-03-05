@@ -3,7 +3,7 @@ import requests
 from . import embed
 from . import user
 from . import extra
-from . import channel
+from . import textchannel
 from . import dmchannel
 
 class Message:
@@ -22,7 +22,7 @@ class Message:
             if "recipients" in channel_response.json():
                 self.channel = dmchannel.DMChannel(response.json()["channelId"])
             else:
-                self.channel = channel.Channel(response.json()["channelId"])
+                self.channel = textchannel.TextChannel(response.json()["channelId"])
 
             self.id = response.json()["messageID"]
             # check if response json has a key called message and if it does then set self.content to that value
@@ -41,7 +41,7 @@ class Message:
 
         else:
             self.id = id
-            self.channel = channel.Channel(channelId)
+            self.channel = textchannel.TextChannel(channelId)
             self.content = content
             self.created = created
             self.creator = creator

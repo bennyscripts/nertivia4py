@@ -5,7 +5,7 @@ import ast
 import json
 
 from nertivia4py.gateway import events
-from . import channel
+from . import textchannel
 from . import user
 from . import extra
 
@@ -20,16 +20,15 @@ class Server:
             self.id = response.json()["server_id"]
             self.name = response.json()["name"]
             self.avatar = response.json()["avatar"]
-            self.default_channel = channel.Channel(response.json()["default_channel_id"])
+            self.default_channel_id = response.json()["default_channel_id"]
             self.created = response.json()["created"]
             self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
-            # self.banner = response.json()["banner"]
 
         else:
             self.id = id
             self.name = name
             self.avatar = avatar
-            self.default_channel = channel.Channel(default_channel_id)
+            self.default_channel_id = default_channel_id
             self.created = created
             self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
             # self.banner = banner
@@ -144,7 +143,7 @@ class Server:
         for server in servers:
             if server["server_id"] == self.id:
                 for chnl in server["channels"]:
-                    chnl2 = channel.Channel(chnl["channelID"], chnl["name"], chnl["server_id"])
+                    chnl2 = textchannel.TextChannel(chnl["channelID"], chnl["name"], chnl["server_id"])
                     channels.append(chnl2)
 
         self.channels = channels
@@ -162,6 +161,18 @@ class Server:
         socket.disconnect()
 
         return self.channels
+
+    def create_text_channel(self, name):
+        response = requests.put(
+            f"https://nertivia.net/api/servers/{self.id}/channels",
+            headers={"authorization": extra.Extra.getauthtoken()},
+            json={
+                "name": name,
+                "type": 1
+            }
+        )
+
+        return textchannel.TextChannel(response.json()["channel"]["channelId"])
 
     get_all_members = get_members
     get_all_channels = get_channels
