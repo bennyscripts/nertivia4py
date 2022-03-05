@@ -9,7 +9,7 @@ from .. import extra
 from .. import message
 
 class Client:
-    def __init__(self, command_prefix, debug=False):
+    def __init__(self, command_prefix, debug=False) -> None:
         self.socket = socketio.Client(engineio_logger=False, logger=debug)
         self.socket_ip = "https://nertivia.net/"
 
@@ -21,7 +21,7 @@ class Client:
 
         extra.Extra.setauthtoken(self.token)
 
-    def run(self, token):
+    def run(self, token) -> None:
         extra.Extra.setauthtoken(token)
 
         self.token = token

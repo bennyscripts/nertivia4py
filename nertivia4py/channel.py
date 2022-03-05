@@ -6,7 +6,7 @@ from .embed import Embed
 from .user import User
 
 class Channel:
-    def __init__(self, id, name="", server_id=""):
+    def __init__(self, id, name="", server_id="") -> None:
         if name == "" or server_id == "":
             response = requests.get(
                 f"https://nertivia.net/api/channels/{id}",
@@ -22,10 +22,10 @@ class Channel:
             self.name = name
             self.server_id = server_id
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def send(self, content = "", embed: Embed = None, buttons: list = None):
+    def send(self, content = "", embed: Embed = None, buttons: list = None) -> Message:
         content = str(content)
         body={}
 
@@ -80,7 +80,7 @@ class Channel:
 
         return response
 
-    def get_messages(self, amount: int = 1):
+    def get_messages(self, amount: int = 1) -> list:
         messages = []
         index = 0
         response = requests.get(

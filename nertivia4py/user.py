@@ -5,7 +5,7 @@ from .extra import Extra
 from .dmchannel import DMChannel
 
 class User:
-    def __init__(self, id, username="", tag="", avatar="", banner="", created="", blocked=""):
+    def __init__(self, id, username="", tag="", avatar="", banner="", created="", blocked="") -> None:
         if username == "" or tag == "" or avatar == "":
             response = requests.get(f"https://nertivia.net/api/user/{id}", headers={"Authorization": Extra.getauthtoken()})
             self.id = response.json()["user"]["id"]
@@ -35,10 +35,10 @@ class User:
         self.avatar_url = f"https://media.nertivia.net/{self.avatar}"
         self.mention = f"[@:{self.id}]"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.username}:{self.tag}"
     
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.username}:{self.tag}"
     
     def send_friend_request(self):

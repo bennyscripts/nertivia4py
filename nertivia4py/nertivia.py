@@ -10,7 +10,7 @@ from .extra import Extra
 from . import gateway
 
 class Nertivia:
-    def __init__(self, token):
+    def __init__(self, token) -> None: 
         global __token
         response = requests.get("https://nertivia.net/api/user", headers={"Authorization": token})
         self.token = token
@@ -26,13 +26,13 @@ class Nertivia:
 
         Extra.setauthtoken(self.token)
 
-    def get_server(self, id):
+    def get_server(self, id) -> Server:
         return Server(id)
 
-    def get_channel(self, id):
+    def get_channel(self, id) -> Channel:
         return Channel(id)
 
-    def get_user(self, id):
+    def get_user(self, id) -> User:
         return User(id)
 
     def create_channel(self, server_id, name):
@@ -66,7 +66,7 @@ class Nertivia:
         data = ast.literal_eval(str(event))
         self.servers = data["user"]["servers"]
 
-    def get_servers(self):
+    def get_servers(self) -> list:
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
@@ -80,7 +80,7 @@ class Nertivia:
 
         return self.servers
 
-    def get_bots(self):
+    def get_bots(self) -> list:
         response = requests.get(
             "https://nertivia.net/api/bots",
             headers={"Authorization": self.token}
@@ -94,7 +94,7 @@ class Nertivia:
 
         return bots
 
-    def create_bot(self):
+    def create_bot(self) -> Bot:
         response = requests.post(
             "https://nertivia.net/api/bots",
             headers={"Authorization": self.token, "content-type": "application/json"}
@@ -102,7 +102,7 @@ class Nertivia:
 
         return Bot(response.json()["id"])
 
-    def get_bot(self, id):
+    def get_bot(self, id) -> Bot:
         response = requests.get(
             "https://nertivia.net/api/bots/" + str(id),
             headers={"Authorization": self.token}

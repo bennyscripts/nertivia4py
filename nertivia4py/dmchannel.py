@@ -4,7 +4,7 @@ from .embed import Embed
 from .extra import Extra
 
 class DMChannel:
-    def __init__(self, id): 
+    def __init__(self, id) -> None: 
         self.id = id
 
     def send(self, content = "", embed: Embed = None, buttons: list = None):

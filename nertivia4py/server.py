@@ -10,7 +10,7 @@ from .user import User
 from .extra import Extra
 
 class Server:
-    def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner=""):
+    def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner="") -> None:
         if name == "" or avatar == "" or default_channel_id == "" or created == "" or banner == "":
             response = requests.get(
                 f"https://nertivia.net/api/servers/{id}",
@@ -79,7 +79,7 @@ class Server:
         else:
             return False
 
-    def ban_member(self, user: User):
+    def ban_member(self, user: User) -> bool:
         userId = user.id
         response = requests.put(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
@@ -91,7 +91,7 @@ class Server:
         else:
             return False
 
-    def kick_member(self, user: User):
+    def kick_member(self, user: User) -> bool:
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/members/{userId}",
@@ -122,7 +122,7 @@ class Server:
 
         self.members = members
 
-    def get_members(self):
+    def get_members(self) -> list:
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
@@ -149,7 +149,7 @@ class Server:
 
         self.channels = channels
 
-    def get_channels(self):
+    def get_channels(self) -> list:
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})

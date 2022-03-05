@@ -4,7 +4,7 @@ from .extra import Extra
 from .user import User
 
 class Bot:
-    def __init__(self, id, username="", tag="", avatar="", commands=[], creator = None):
+    def __init__(self, id, username="", tag="", avatar="", commands=[], creator = None) -> None:
         if username == "" or tag == "" or avatar == "" or commands == [] or creator is None:
             response = requests.get(
                 f"https://nertivia.net/api/bots/{id}",

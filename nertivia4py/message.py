@@ -7,19 +7,19 @@ from . import channel
 from . import dmchannel
 
 class Message:
-    def __init__(self, id, channelId, creator="", content="", created=""):
+    def __init__(self, id, channelId, creator="", content="", created="") -> None:
         if creator == "" or content == "" or created == "":
             response = requests.get(
                 f"https://nertivia.net/api/messages/{id}/channels/{channelId}",
                 headers={"authorization": extra.Extra.getauthtoken()}
             )
 
-            channelResponse = requests.get(
+            channel_response = requests.get(
                 f"https://nertivia.net/api/channels/{response.json()['channelId']}",
                 headers={"authorization": extra.Extra.getauthtoken()}
             )
 
-            if "recipients" in channelResponse.json():
+            if "recipients" in channel_response.json():
                 self.channel = dmchannel.DMChannel(response.json()["channelId"])
             else:
                 self.channel = channel.Channel(response.json()["channelId"])
@@ -46,10 +46,10 @@ class Message:
             self.created = created
             self.creator = creator
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.content
 
-    def reply(self, content:str = "", embed: embed.Embed = None, buttons: list = None):
+    def reply(self, content:str = "", embed: embed.Embed = None, buttons: list = None) -> "Message":
         body={"message": f"<m{self.id}>"+content}
         if embed != None:
             body["htmlEmbed"] = embed.json
