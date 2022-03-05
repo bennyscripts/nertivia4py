@@ -1,9 +1,10 @@
-__authtoken = ""
+AUTH_TOKEN = ""
 
 class Extra:
     def setauthtoken(token):
-        global __authtoken
-        __authtoken = token
+        global AUTH_TOKEN
+        AUTH_TOKEN = token
         
     def getauthtoken():
-        return __authtoken
+        global AUTH_TOKEN
+        return AUTH_TOKEN
