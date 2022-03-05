@@ -15,14 +15,14 @@ class Message:
             )
 
             channelResponse = requests.get(
-                f"https://nertivia.net/api/channels/{response.json()['channelID']}",
+                f"https://nertivia.net/api/channels/{response.json()['channelId']}",
                 headers={"authorization": extra.Extra.getauthtoken()}
             )
 
             if "recipients" in channelResponse.json():
-                self.channel = dmchannel.DMChannel(response.json()["channelID"])
+                self.channel = dmchannel.DMChannel(response.json()["channelId"])
             else:
-                self.channel = channel.Channel(response.json()["channelID"])
+                self.channel = channel.Channel(response.json()["channelId"])
 
             self.id = response.json()["messageID"]
             # check if response json has a key called message and if it does then set self.content to that value
@@ -92,7 +92,7 @@ class Message:
 
         return response.json()
 
-    def addReaction(self, emoji):
+    def add_reaction(self, emoji):
         response = requests.post(
             f"https://nertivia.net/api/messages/{self.id}/channels/{self.channel.id}/reactions",
             headers={"authorization": extra.Extra.getauthtoken()},
@@ -101,7 +101,7 @@ class Message:
 
         return response.json()
 
-    def removeReaction(self, emoji):
+    def remove_reaction(self, emoji):
         response = requests.delete(
             f"https://nertivia.net/api/messages/{self.id}/channels/{self.channel.id}/reactions",
             headers={"authorization": extra.Extra.getauthtoken()},

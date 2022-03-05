@@ -26,16 +26,16 @@ class Nertivia:
 
         Extra.setauthtoken(self.token)
 
-    def getServer(self, id):
+    def get_server(self, id):
         return Server(id)
 
-    def getChannel(self, id):
+    def get_channel(self, id):
         return Channel(id)
 
-    def getUser(self, id):
+    def get_user(self, id):
         return User(id)
 
-    def createChannel(self, server_id, name):
+    def create_channel(self, server_id, name):
         response = requests.put(
             f"https://nertivia.net/api/servers/{server_id}/channels",
             headers={"Authorization": self.token, "content-type": "application/json"},
@@ -44,7 +44,7 @@ class Nertivia:
 
         return response.json()
 
-    def setStatus(self, status):
+    def set_status(self, status):
         response = requests.post(
             "https://nertivia.net/api/settings/status",
             headers={"Authorization": self.token, "content-type": "application/json"},
@@ -53,7 +53,7 @@ class Nertivia:
 
         return response.json()
 
-    def setCustomStatus(self, text):
+    def set_custom_status(self, text):
         response = requests.post(
             "https://nertivia.net/api/settings/custom-status",
             headers={"Authorization": self.token, "content-type": "application/json"},
@@ -62,16 +62,16 @@ class Nertivia:
 
         return response.json()
 
-    def getServersHandler(self, event):
+    def _get_servers_handler(self, event):
         data = ast.literal_eval(str(event))
         self.servers = data["user"]["servers"]
 
-    def getServers(self):
+    def get_servers(self):
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on(gateway.events.Events().get_event("on_success"), self.getServersHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self._get_servers_handler)
 
         while len(self.servers) == 0:
             pass
@@ -80,7 +80,7 @@ class Nertivia:
 
         return self.servers
 
-    def getBots(self):
+    def get_bots(self):
         response = requests.get(
             "https://nertivia.net/api/bots",
             headers={"Authorization": self.token}
@@ -94,7 +94,7 @@ class Nertivia:
 
         return bots
 
-    def createBot(self):
+    def create_bot(self):
         response = requests.post(
             "https://nertivia.net/api/bots",
             headers={"Authorization": self.token, "content-type": "application/json"}
@@ -102,7 +102,7 @@ class Nertivia:
 
         return Bot(response.json()["id"])
 
-    def getBot(self, id):
+    def get_bot(self, id):
         response = requests.get(
             "https://nertivia.net/api/bots/" + str(id),
             headers={"Authorization": self.token}
@@ -111,7 +111,7 @@ class Nertivia:
         bot = Bot(response.json()["id"], response.json()["username"], response.json()["tag"], response.json()["avatar"], response.json()["botCommands"])
         return bot
 
-    def deleteBot(self, id):
+    def delete_bot(self, id):
         response = requests.delete(
             "https://nertivia.net/api/bots/" + str(id),
             headers={"Authorization": self.token}

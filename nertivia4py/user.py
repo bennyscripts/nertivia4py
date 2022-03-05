@@ -41,7 +41,7 @@ class User:
     def __repr__(self):
         return f"{self.username}:{self.tag}"
     
-    def sendFriendRequest(self):
+    def send_friend_request(self):
         response = requests.post(
             "https://nertivia.net/api/user/relationship",
             headers={
@@ -56,7 +56,7 @@ class User:
 
         return response.json()
 
-    def acceptFriendRequest(self):
+    def accept_friend_request(self):
         response = requests.put(
             "https://nertivia.net/api/user/relationship",
             headers={
@@ -70,7 +70,7 @@ class User:
         
         return response.json()
 
-    def declineFriendRequest(self):
+    def decline_friend_request(self):
         response = requests.delete(
             "https://nertivia.net/api/user/relationship",
             headers={

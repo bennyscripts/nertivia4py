@@ -10,8 +10,8 @@ from .user import User
 from .extra import Extra
 
 class Server:
-    def __init__(self, id, name="", avatar="", defaultChannelId="", created="", banner=""):
-        if name == "" or avatar == "" or defaultChannelId == "" or created == "" or banner == "":
+    def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner=""):
+        if name == "" or avatar == "" or default_channel_id == "" or created == "" or banner == "":
             response = requests.get(
                 f"https://nertivia.net/api/servers/{id}",
                 headers={"authorization": Extra.getauthtoken()}
@@ -20,7 +20,7 @@ class Server:
             self.id = response.json()["server_id"]
             self.name = response.json()["name"]
             self.avatar = response.json()["avatar"]
-            self.defaultChannel = channel.Channel(response.json()["default_channel_id"])
+            self.default_channel = channel.Channel(response.json()["default_channel_id"])
             self.created = response.json()["created"]
             self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
             # self.banner = response.json()["banner"]
@@ -29,7 +29,7 @@ class Server:
             self.id = id
             self.name = name
             self.avatar = avatar
-            self.defaultChannel = channel.Channel(defaultChannelId)
+            self.default_channel = channel.Channel(default_channel_id)
             self.created = created
             self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
             # self.banner = banner
@@ -60,7 +60,7 @@ class Server:
 
         return response.json()
 
-    def getBans(self):
+    def get_bans(self):
         response = requests.get(
             f"https://nertivia.net/api/servers/{self.id}/bans",
             headers={"authorization": Extra.getauthtoken()}
@@ -79,7 +79,7 @@ class Server:
         else:
             return False
 
-    def banMember(self, user: User):
+    def ban_member(self, user: User):
         userId = user.id
         response = requests.put(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
@@ -91,7 +91,7 @@ class Server:
         else:
             return False
 
-    def kickMember(self, user: User):
+    def kick_member(self, user: User):
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/members/{userId}",
@@ -103,7 +103,7 @@ class Server:
         else:
             return False
 
-    def unbanMember(self, user: User):
+    def unban_member(self, user: User):
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
@@ -112,7 +112,7 @@ class Server:
 
         return response.json()
 
-    def getMembersHandler(self, event):
+    def _get_members_handler(self, event):
         data = ast.literal_eval(str(event))
 
         members = []
@@ -122,12 +122,12 @@ class Server:
 
         self.members = members
 
-    def getMembers(self):
+    def get_members(self):
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on(gateway.events.Events().get_event("on_success"), self.getMembersHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self._get_members_handler)
 
         while len(self.members) == 0:
             pass
@@ -136,7 +136,7 @@ class Server:
 
         return self.members
 
-    def getChannelsHandler(self, event):
+    def _get_channels_handler(self, event):
         data = ast.literal_eval(str(event))
         servers = data["user"]["servers"]
         channels = []
@@ -149,12 +149,12 @@ class Server:
 
         self.channels = channels
 
-    def getChannels(self):
+    def get_channels(self):
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": Extra.getauthtoken()})
 
-        socket.on(gateway.events.Events().get_event("on_success"), self.getChannelsHandler)
+        socket.on(gateway.events.Events().get_event("on_success"), self._get_channels_handler)
 
         while len(self.channels) == 0:
             pass

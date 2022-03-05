@@ -6,21 +6,21 @@ from .embed import Embed
 from .user import User
 
 class Channel:
-    def __init__(self, id, name="", serverId=""):
-        if name == "" or serverId == "":
+    def __init__(self, id, name="", server_id=""):
+        if name == "" or server_id == "":
             response = requests.get(
                 f"https://nertivia.net/api/channels/{id}",
                 headers={"authorization": Extra.getauthtoken()}
             )
 
-            self.id = response.json()["channelID"]
+            self.id = response.json()["channelId"]
             self.name = response.json()["name"]
-            self.serverId = response.json()["server_id"]
+            self.server_id = response.json()["server_id"]
         
         else:
             self.id = id
             self.name = name
-            self.serverId = serverId
+            self.server_id = server_id
 
     def __str__(self):
         return self.name
@@ -53,7 +53,7 @@ class Channel:
 
     def edit(self, name):
         response = requests.patch(
-            f"https://nertivia.net/api/servers/{self.serverId}/channels/{self.id}",
+            f"https://nertivia.net/api/servers/{self.server_id}/channels/{self.id}",
             headers={"authorization": Extra.getauthtoken()},
             json={
                 "name": name
@@ -66,7 +66,7 @@ class Channel:
 
     def delete(self):
         response = requests.delete(
-            f"https://nertivia.net/api/servers/{self.serverId}/channels/{self.id}",
+            f"https://nertivia.net/api/servers/{self.server_id}/channels/{self.id}",
             headers={"authorization": Extra.getauthtoken()}
         )
 
@@ -80,7 +80,7 @@ class Channel:
 
         return response
 
-    def getMessages(self, amount: int = 1):
+    def get_messages(self, amount: int = 1):
         messages = []
         index = 0
         response = requests.get(
@@ -102,7 +102,7 @@ class Channel:
         
         return messages
 
-    def getMessage(self, id):
+    def get_message(self, id):
         messages = self.getMessages()
         for message in messages:
             if message.id == id:
