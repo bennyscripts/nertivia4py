@@ -9,13 +9,12 @@ bot = nertivia4py.gateway.Client(prefix)
 def on_success(event):
     print("Connected!")
 
+@bot.command(name="ping", description="Ping command.")
 def ping_command(message, args):
     message.reply("Pong!")
 
+@bot.command(name="echo", description="Make the user say something.", usage="<text>")
 def echo_command(message, args):
-    message.reply(args[0])
-
-bot.register_command("ping", ping_command)
-bot.register_command("echo", echo_command)
+    message.channel.send(args[0])
 
 bot.run(token)
