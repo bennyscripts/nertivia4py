@@ -4,17 +4,17 @@ import socketio
 import ast
 import json
 
-from . import gateway
+from nertivia4py.gateway import events
 from . import channel
-from .user import User
-from .extra import Extra
+from . import user
+from . import extra
 
 class Server:
     def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner="") -> None:
         if name == "" or avatar == "" or default_channel_id == "" or created == "" or banner == "":
             response = requests.get(
                 f"https://nertivia.net/api/servers/{id}",
-                headers={"authorization": Extra.getauthtoken()}
+                headers={"authorization": extra.Extra.getauthtoken()}
             )
 
             self.id = response.json()["server_id"]
@@ -43,7 +43,7 @@ class Server:
     def edit(self, name):
         response = requests.patch(
             f"https://nertivia.net/api/servers/{self.id}",
-            headers={"authorization": Extra.getauthtoken()},
+            headers={"authorization": extra.Extra.getauthtoken()},
             json={
                 "name": name
             }
@@ -55,7 +55,7 @@ class Server:
     def delete(self):
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}",
-            headers={"authorization": Extra.getauthtoken()}
+            headers={"authorization": extra.Extra.getauthtoken()}
         )
 
         return response.json()
@@ -63,15 +63,15 @@ class Server:
     def get_bans(self):
         response = requests.get(
             f"https://nertivia.net/api/servers/{self.id}/bans",
-            headers={"authorization": Extra.getauthtoken()}
+            headers={"authorization": extra.Extra.getauthtoken()}
         )
 
         if "missing permission" not in response.text.lower():
             bans = []
 
-            for user in response.json():
-                user = user["user"]
-                user2 = User(user["id"])
+            for user3 in response.json():
+                user4 = user3["user"]
+                user2 = user.User(user["id"])
                 bans.append(user2)
 
             return bans
@@ -79,11 +79,11 @@ class Server:
         else:
             return False
 
-    def ban_member(self, user: User) -> bool:
+    def ban_member(self, user: user.User) -> bool:
         userId = user.id
         response = requests.put(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
-            headers={"authorization": Extra.getauthtoken()}
+            headers={"authorization": extra.Extra.getauthtoken()}
         )
 
         if "missing permission" not in response.text.lower():
@@ -91,11 +91,11 @@ class Server:
         else:
             return False
 
-    def kick_member(self, user: User) -> bool:
+    def kick_member(self, user: user.User) -> bool:
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/members/{userId}",
-            headers={"authorization": Extra.getauthtoken()}
+            headers={"authorization": extra.Extra.getauthtoken()}
         )
 
         if "missing permission" not in response.text.lower():
@@ -103,11 +103,11 @@ class Server:
         else:
             return False
 
-    def unban_member(self, user: User):
+    def unban_member(self, user: user.User):
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
-            headers={"authorization": Extra.getauthtoken()}
+            headers={"authorization": extra.Extra.getauthtoken()}
         )
 
         return response.json()
@@ -125,9 +125,9 @@ class Server:
     def get_members(self) -> list:
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
-        socket.emit("authentication", {"token": Extra.getauthtoken()})
+        socket.emit("authentication", {"token": extra.Extra.getauthtoken()})
 
-        socket.on(gateway.events.Events().get_event("on_success"), self._get_members_handler)
+        socket.on(events.Events().get_event("on_success"), self._get_members_handler)
 
         while len(self.members) == 0:
             pass
@@ -152,9 +152,9 @@ class Server:
     def get_channels(self) -> list:
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
-        socket.emit("authentication", {"token": Extra.getauthtoken()})
+        socket.emit("authentication", {"token": extra.Extra.getauthtoken()})
 
-        socket.on(gateway.events.Events().get_event("on_success"), self._get_channels_handler)
+        socket.on(events.Events().get_event("on_success"), self._get_channels_handler)
 
         while len(self.channels) == 0:
             pass
@@ -162,3 +162,6 @@ class Server:
         socket.disconnect()
 
         return self.channels
+
+    get_all_members = get_members
+    get_all_channels = get_channels

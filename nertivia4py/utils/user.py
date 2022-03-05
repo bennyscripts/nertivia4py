@@ -1,13 +1,13 @@
 import requests
 
-from .embed import Embed
-from .extra import Extra
-from .dmchannel import DMChannel
+from . import embed
+from . import extra
+from . import dmchannel
 
 class User:
     def __init__(self, id, username="", tag="", avatar="", banner="", created="", blocked="") -> None:
         if username == "" or tag == "" or avatar == "":
-            response = requests.get(f"https://nertivia.net/api/user/{id}", headers={"Authorization": Extra.getauthtoken()})
+            response = requests.get(f"https://nertivia.net/api/user/{id}", headers={"Authorization": extra.Extra.getauthtoken()})
             self.id = response.json()["user"]["id"]
             self.avatar = response.json()["user"]["avatar"]
             try:
@@ -45,7 +45,7 @@ class User:
         response = requests.post(
             "https://nertivia.net/api/user/relationship",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             },
             json={
@@ -60,7 +60,7 @@ class User:
         response = requests.put(
             "https://nertivia.net/api/user/relationship",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             },
             json={
@@ -74,7 +74,7 @@ class User:
         response = requests.delete(
             "https://nertivia.net/api/user/relationship",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             },
             json={
@@ -88,7 +88,7 @@ class User:
         response = requests.post(
             "https://nertivia.net/api/user/block",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             },
             json={
@@ -102,7 +102,7 @@ class User:
         response = requests.delete(
             "https://nertivia.net/api/user/block",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             },
             json={
@@ -112,15 +112,19 @@ class User:
 
         return response.json()
 
-    def dm(self, message, embed: Embed = None):
+    def dm(self, message, embed: embed.Embed = None):
         response = requests.post(
             f"https://nertivia.net/api/channels/{self.id}",
             headers={
-                "Authorization": Extra.getauthtoken(),
+                "Authorization": extra.Extra.getauthtoken(),
                 "Content-Type": "application/json"
             }
         )
 
-        dmchannel = DMChannel(response.json()["channel"]["channelID"])
+        dmchannel = dmchannel.DMChannel(response.json()["channel"]["channelID"])
         
         return dmchannel.send(message, embed=embed)
+    
+    send_message = dm
+    send_dm = dm
+    send = dm
