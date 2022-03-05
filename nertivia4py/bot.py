@@ -50,12 +50,9 @@ class Bot:
                 if cmd.name == command or command in cmd.aliases:
                     callback = cmd.get_callback()
 
-                    try:
-                        callback(msg, args)
-                    except TypeError:
-                        callback(msg)
-                    except Exception as e:
-                        raise exceptions.CommandError(e)
+                    try: callback(msg, args)
+                    except TypeError: callback(msg)
+                    except Exception as e: raise exceptions.CommandError(e)
 
     def event(self, *args):
         eventname = args[0].__name__
