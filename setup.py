@@ -36,7 +36,7 @@ Support Nertivia server : https://nertivia.net/i/nertivia4py
 setup(
     name='nertivia4py',
     packages=['nertivia4py', 'nertivia4py.gateway', 'nertivia4py.utils', 'nertivia4py.commands'],
-    version='1.0.0',
+    version='1.0.1',
     license='MIT',
     description='A Python wrapper for the Nertivia API',
     long_description_content_type="text/markdown",
@@ -46,5 +46,5 @@ setup(
     url='https://github.com/bentettmar/nertivia4py',
     keywords=["nertivia", "api", "wrapper", "python",
               "bot", "nertivia.py", "nertivia4py"],
-    install_requires=["requests", 'socketio-client'],
+    install_requires=["requests", 'python-socketio[client]'],
 )
