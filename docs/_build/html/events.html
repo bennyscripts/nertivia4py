@@ -1,0 +1,901 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="nertivia4py.utils.Get" href="utils/get.html" />
+
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+        <title>nertivia4py.gateway.Events - Nertivia4PY 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/avatar.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">nertivia4py.Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/bot.html">nertivia4py.utils.Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/textchannel.html">nertivia4py.utils.TextChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/dmchannel.html">nertivia4py.utils.DMChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/embed.html">nertivia4py.utils.Embed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/message.html">nertivia4py.utils.Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/user.html">nertivia4py.utils.User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/member.html">nertivia4py.utils.Member</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/server.html">nertivia4py.utils.Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.gateway.Events</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="nertivia4py-gateway-events">
+<h1>nertivia4py.gateway.Events<a class="headerlink" href="#nertivia4py-gateway-events" title="Permalink to this headline">#</a></h1>
+<section id="nertivia4py-bot-on-success">
+<h2>nertivia4py.Bot.on_success<a class="headerlink" href="#nertivia4py-bot-on-success" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-auth-error">
+<h2>nertivia4py.Bot.on_auth_error<a class="headerlink" href="#nertivia4py-bot-on-auth-error" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-command">
+<h2>nertivia4py.Bot.on_command<a class="headerlink" href="#nertivia4py-bot-on-command" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>message (nertivia4py.utils.Message) : The message that triggered the command.</p></li>
+<li><p>command (nertivia4py.commands.Command) : The command that was triggered.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-command-error">
+<h2>nertivia4py.Bot.on_command_error<a class="headerlink" href="#nertivia4py-bot-on-command-error" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>error (Exception) : The error that was raised.</p></li>
+<li><p>command (nertivia4py.commands.Command) : The command that was triggered.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-message">
+<h2>nertivia4py.Bot.on_message<a class="headerlink" href="#nertivia4py-bot-on-message" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>message (nertivia4py.utils.Message) : The message that was received.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-message-delete">
+<h2>nertivia4py.Bot.on_message_delete<a class="headerlink" href="#nertivia4py-bot-on-message-delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-message-bulk-delete">
+<h2>nertivia4py.Bot.on_message_bulk_delete<a class="headerlink" href="#nertivia4py-bot-on-message-bulk-delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-message-edit">
+<h2>nertivia4py.Bot.on_message_edit<a class="headerlink" href="#nertivia4py-bot-on-message-edit" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-reaction-update">
+<h2>nertivia4py.Bot.on_reaction_update<a class="headerlink" href="#nertivia4py-bot-on-reaction-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-notification-dismiss">
+<h2>nertivia4py.Bot.on_notification_dismiss<a class="headerlink" href="#nertivia4py-bot-on-notification-dismiss" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-channel-create">
+<h2>nertivia4py.Bot.on_channel_create<a class="headerlink" href="#nertivia4py-bot-on-channel-create" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-channel-remove">
+<h2>nertivia4py.Bot.on_channel_remove<a class="headerlink" href="#nertivia4py-bot-on-channel-remove" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-channel-mute">
+<h2>nertivia4py.Bot.on_channel_mute<a class="headerlink" href="#nertivia4py-bot-on-channel-mute" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-channel-unmute">
+<h2>nertivia4py.Bot.on_channel_unmute<a class="headerlink" href="#nertivia4py-bot-on-channel-unmute" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-channel-create">
+<h2>nertivia4py.Bot.on_server_channel_create<a class="headerlink" href="#nertivia4py-bot-on-server-channel-create" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-channel-remove">
+<h2>nertivia4py.Bot.on_server_channel_remove<a class="headerlink" href="#nertivia4py-bot-on-server-channel-remove" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-channel-update">
+<h2>nertivia4py.Bot.on_server_channel_update<a class="headerlink" href="#nertivia4py-bot-on-server-channel-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-channel-position-update">
+<h2>nertivia4py.Bot.on_server_channel_position_update<a class="headerlink" href="#nertivia4py-bot-on-server-channel-position-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-position-update">
+<h2>nertivia4py.Bot.on_server_position_update<a class="headerlink" href="#nertivia4py-bot-on-server-position-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-join">
+<h2>nertivia4py.Bot.on_server_join<a class="headerlink" href="#nertivia4py-bot-on-server-join" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-leave">
+<h2>nertivia4py.Bot.on_server_leave<a class="headerlink" href="#nertivia4py-bot-on-server-leave" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-mute">
+<h2>nertivia4py.Bot.on_server_mute<a class="headerlink" href="#nertivia4py-bot-on-server-mute" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-members">
+<h2>nertivia4py.Bot.on_server_members<a class="headerlink" href="#nertivia4py-bot-on-server-members" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-roles">
+<h2>nertivia4py.Bot.on_server_roles<a class="headerlink" href="#nertivia4py-bot-on-server-roles" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-roles-update">
+<h2>nertivia4py.Bot.on_roles_update<a class="headerlink" href="#nertivia4py-bot-on-roles-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-role-create">
+<h2>nertivia4py.Bot.on_role_create<a class="headerlink" href="#nertivia4py-bot-on-role-create" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-role-delete">
+<h2>nertivia4py.Bot.on_role_delete<a class="headerlink" href="#nertivia4py-bot-on-role-delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-role-update">
+<h2>nertivia4py.Bot.on_role_update<a class="headerlink" href="#nertivia4py-bot-on-role-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-member-role-remove">
+<h2>nertivia4py.Bot.on_server_member_role_remove<a class="headerlink" href="#nertivia4py-bot-on-server-member-role-remove" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-server-member-role-add">
+<h2>nertivia4py.Bot.on_server_member_role_add<a class="headerlink" href="#nertivia4py-bot-on-server-member-role-add" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-member-join">
+<h2>nertivia4py.Bot.on_member_join<a class="headerlink" href="#nertivia4py-bot-on-member-join" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-member-leave">
+<h2>nertivia4py.Bot.on_member_leave<a class="headerlink" href="#nertivia4py-bot-on-member-leave" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-self-status-update">
+<h2>nertivia4py.Bot.on_self_status_update<a class="headerlink" href="#nertivia4py-bot-on-self-status-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-self-custom-status-update">
+<h2>nertivia4py.Bot.on_self_custom_status_update<a class="headerlink" href="#nertivia4py-bot-on-self-custom-status-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-self-program-activity-update">
+<h2>nertivia4py.Bot.on_self_program_activity_update<a class="headerlink" href="#nertivia4py-bot-on-self-program-activity-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-blocked">
+<h2>nertivia4py.Bot.on_user_blocked<a class="headerlink" href="#nertivia4py-bot-on-user-blocked" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-unblocked">
+<h2>nertivia4py.Bot.on_user_unblocked<a class="headerlink" href="#nertivia4py-bot-on-user-unblocked" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-joined-call">
+<h2>nertivia4py.Bot.on_user_joined_call<a class="headerlink" href="#nertivia4py-bot-on-user-joined-call" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-left-call">
+<h2>nertivia4py.Bot.on_user_left_call<a class="headerlink" href="#nertivia4py-bot-on-user-left-call" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-voice-receive-signal">
+<h2>nertivia4py.Bot.on_voice_receive_signal<a class="headerlink" href="#nertivia4py-bot-on-voice-receive-signal" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-voice-receive-return-signla">
+<h2>nertivia4py.Bot.on_voice_receive_return_signla<a class="headerlink" href="#nertivia4py-bot-on-voice-receive-return-signla" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-google-drive-linked">
+<h2>nertivia4py.Bot.on_google_drive_linked<a class="headerlink" href="#nertivia4py-bot-on-google-drive-linked" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-status-update">
+<h2>nertivia4py.Bot.on_user_status_update<a class="headerlink" href="#nertivia4py-bot-on-user-status-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-user-custom-status-update">
+<h2>nertivia4py.Bot.on_user_custom_status_update<a class="headerlink" href="#nertivia4py-bot-on-user-custom-status-update" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-relationship-add">
+<h2>nertivia4py.Bot.on_relationship_add<a class="headerlink" href="#nertivia4py-bot-on-relationship-add" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-relationship-remove">
+<h2>nertivia4py.Bot.on_relationship_remove<a class="headerlink" href="#nertivia4py-bot-on-relationship-remove" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-relationship-accept">
+<h2>nertivia4py.Bot.on_relationship_accept<a class="headerlink" href="#nertivia4py-bot-on-relationship-accept" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-custom-emoji-renamed">
+<h2>nertivia4py.Bot.on_custom_emoji_renamed<a class="headerlink" href="#nertivia4py-bot-on-custom-emoji-renamed" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-custom-emoji-uploaded">
+<h2>nertivia4py.Bot.on_custom_emoji_uploaded<a class="headerlink" href="#nertivia4py-bot-on-custom-emoji-uploaded" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-custom-emoji-deleted">
+<h2>nertivia4py.Bot.on_custom_emoji_deleted<a class="headerlink" href="#nertivia4py-bot-on-custom-emoji-deleted" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-button-click">
+<h2>nertivia4py.Bot.on_button_click<a class="headerlink" href="#nertivia4py-bot-on-button-click" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="nertivia4py-bot-on-button-click-callback">
+<h2>nertivia4py.Bot.on_button_click_callback<a class="headerlink" href="#nertivia4py-bot-on-button-click-callback" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Callback arguments:</dt><dd><ul class="simple">
+<li><p>event - The event’s response.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="utils/get.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">nertivia4py.utils.Get</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Ben Tettmar
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.gateway.Events</a><ul>
+<li><a class="reference internal" href="#nertivia4py-bot-on-success">nertivia4py.Bot.on_success</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-auth-error">nertivia4py.Bot.on_auth_error</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-command">nertivia4py.Bot.on_command</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-command-error">nertivia4py.Bot.on_command_error</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-message">nertivia4py.Bot.on_message</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-message-delete">nertivia4py.Bot.on_message_delete</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-message-bulk-delete">nertivia4py.Bot.on_message_bulk_delete</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-message-edit">nertivia4py.Bot.on_message_edit</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-reaction-update">nertivia4py.Bot.on_reaction_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-notification-dismiss">nertivia4py.Bot.on_notification_dismiss</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-channel-create">nertivia4py.Bot.on_channel_create</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-channel-remove">nertivia4py.Bot.on_channel_remove</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-channel-mute">nertivia4py.Bot.on_channel_mute</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-channel-unmute">nertivia4py.Bot.on_channel_unmute</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-channel-create">nertivia4py.Bot.on_server_channel_create</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-channel-remove">nertivia4py.Bot.on_server_channel_remove</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-channel-update">nertivia4py.Bot.on_server_channel_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-channel-position-update">nertivia4py.Bot.on_server_channel_position_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-position-update">nertivia4py.Bot.on_server_position_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-join">nertivia4py.Bot.on_server_join</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-leave">nertivia4py.Bot.on_server_leave</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-mute">nertivia4py.Bot.on_server_mute</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-members">nertivia4py.Bot.on_server_members</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-roles">nertivia4py.Bot.on_server_roles</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-roles-update">nertivia4py.Bot.on_roles_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-role-create">nertivia4py.Bot.on_role_create</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-role-delete">nertivia4py.Bot.on_role_delete</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-role-update">nertivia4py.Bot.on_role_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-member-role-remove">nertivia4py.Bot.on_server_member_role_remove</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-server-member-role-add">nertivia4py.Bot.on_server_member_role_add</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-member-join">nertivia4py.Bot.on_member_join</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-member-leave">nertivia4py.Bot.on_member_leave</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-self-status-update">nertivia4py.Bot.on_self_status_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-self-custom-status-update">nertivia4py.Bot.on_self_custom_status_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-self-program-activity-update">nertivia4py.Bot.on_self_program_activity_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-blocked">nertivia4py.Bot.on_user_blocked</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-unblocked">nertivia4py.Bot.on_user_unblocked</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-joined-call">nertivia4py.Bot.on_user_joined_call</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-left-call">nertivia4py.Bot.on_user_left_call</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-voice-receive-signal">nertivia4py.Bot.on_voice_receive_signal</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-voice-receive-return-signla">nertivia4py.Bot.on_voice_receive_return_signla</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-google-drive-linked">nertivia4py.Bot.on_google_drive_linked</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-status-update">nertivia4py.Bot.on_user_status_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-user-custom-status-update">nertivia4py.Bot.on_user_custom_status_update</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-relationship-add">nertivia4py.Bot.on_relationship_add</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-relationship-remove">nertivia4py.Bot.on_relationship_remove</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-relationship-accept">nertivia4py.Bot.on_relationship_accept</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-custom-emoji-renamed">nertivia4py.Bot.on_custom_emoji_renamed</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-custom-emoji-uploaded">nertivia4py.Bot.on_custom_emoji_uploaded</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-custom-emoji-deleted">nertivia4py.Bot.on_custom_emoji_deleted</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-button-click">nertivia4py.Bot.on_button_click</a></li>
+<li><a class="reference internal" href="#nertivia4py-bot-on-button-click-callback">nertivia4py.Bot.on_button_click_callback</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>
