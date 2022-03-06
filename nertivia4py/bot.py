@@ -57,6 +57,9 @@ class Bot:
     def event(self, *args):
         eventname = args[0].__name__
 
+        if not events.Events().is_valid_event(eventname):
+            raise exceptions.InvalidEvent("Event name is invalid.")
+
         evnts = events.Events().events
 
         for event in evnts:

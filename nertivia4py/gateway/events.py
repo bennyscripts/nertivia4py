@@ -84,3 +84,10 @@ class Events:
             for key, value in event.items():
                 if value == event_value:
                     return key
+
+    def is_valid_event(self, event_name):
+        for event in self.events:
+            for key, value in event.items():
+                if key == event_name:
+                    return True
+        return False
