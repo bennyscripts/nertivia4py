@@ -107,11 +107,11 @@ class Bot:
             CommandAlreadyExists: If the command already exists.
         """
 
-        name = kwargs["name"]
         description = kwargs["description"] if "description" in kwargs else ""
         usage = kwargs["usage"] if "usage" in kwargs else ""
         aliases = kwargs["aliases"] if "aliases" in kwargs else []
         callback = kwargs["callback"] or kwargs["func"] or kwargs["function"]
+        name = kwargs["name"] if "name" in kwargs else callback.__name__
 
         for cmd in self.commands:
             if name in aliases:
