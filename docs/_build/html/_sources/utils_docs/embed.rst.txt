@@ -1,0 +1,24 @@
+nertivia4py.utils.Embed
+=======================
+Attributes:
+    title (str): The title of the embed.
+    description (str): The description of the embed.
+    colour (str): The colour of the embed.
+    color (str): The color of the embed.
+
+
+set_image(url)
+--------------
+Set the image of the embed.
+
+Args:
+    url (str): The url of the image.
+
+
+set_footer(text, icon_url)
+--------------------------
+Set the footer of the embed.
+    
+Args:
+    text (str): The text of the footer.
+    icon_url (str): The url of the icon.

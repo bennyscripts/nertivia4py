@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>nertivia4py.utils.Server &#8212; Nertivia4PY 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="nertivia4py.utils.get" href="get.html" />
+    <link rel="prev" title="nertivia4py.utils.Member" href="member.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="nertivia4py-utils-server">
+<h1>nertivia4py.utils.Server<a class="headerlink" href="#nertivia4py-utils-server" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>id (str): The server’s ID.
+name (str): The server’s name.
+avatar (str): The server’s avatar.
+default_channel_id (str): The server’s default channel ID.
+created (str): The server’s creation date.
+banner (str): The server’s banner.</p>
+</dd>
+</dl>
+<section id="edit-name">
+<h2>edit(name)<a class="headerlink" href="#edit-name" title="Permalink to this headline">¶</a></h2>
+<p>Edits the server</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (str): The new name of the server.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+</dd>
+</dl>
+</section>
+<section id="delete">
+<h2>delete()<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Deletes the server</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+</dd>
+</dl>
+</section>
+<section id="get-bans">
+<h2>get_bans()<a class="headerlink" href="#get-bans" title="Permalink to this headline">¶</a></h2>
+<p>Gets a list of banned users from the server</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: A list of banned users.
+None: If the request failed.</p>
+</dd>
+</dl>
+</section>
+<section id="ban-member-user">
+<h2>ban_member(user)<a class="headerlink" href="#ban-member-user" title="Permalink to this headline">¶</a></h2>
+<p>Bans a member from the server</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>user (user.User): The user to ban.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: Whether the request was successful.</p>
+</dd>
+</dl>
+</section>
+<section id="kick-member-user">
+<h2>kick_member(user)<a class="headerlink" href="#kick-member-user" title="Permalink to this headline">¶</a></h2>
+<p>Kicks a member from the server</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>user (user.User): The user to Kick.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: Whether the request was successful.</p>
+</dd>
+</dl>
+</section>
+<section id="unban-member-user">
+<h2>unban_member(user)<a class="headerlink" href="#unban-member-user" title="Permalink to this headline">¶</a></h2>
+<p>Unbans a member from the server</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>user (user.User): The user to unban.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: Whether the request was successful.</p>
+</dd>
+</dl>
+</section>
+<section id="get-members">
+<h2>get_members()<a class="headerlink" href="#get-members" title="Permalink to this headline">¶</a></h2>
+<p>Gets a list of members from the server</p>
+<dl class="simple">
+<dt>Aliases:</dt><dd><p>get_all_members()</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of members.</p>
+</dd>
+</dl>
+</section>
+<section id="get-channels">
+<h2>get_channels()<a class="headerlink" href="#get-channels" title="Permalink to this headline">¶</a></h2>
+<p>Gets a list of channels from the server</p>
+<dl class="simple">
+<dt>Aliases:</dt><dd><p>get_all_channels()</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of channels.</p>
+</dd>
+</dl>
+</section>
+<section id="create-text-channel-name">
+<h2>create_text_channel(name)<a class="headerlink" href="#create-text-channel-name" title="Permalink to this headline">¶</a></h2>
+<p>Creates a text channel in the server.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (str): The name of the channel.</p>
+</dd>
+<dt>Returns:</dt><dd><p>textchannel.TextChannel: The channel that was created.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Nertivia4PY</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../bot.html">nertivia4py.Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">nertivia4py.utils.Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">nertivia4py.utils.Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#edit-name">edit(name)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete">delete()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-bans">get_bans()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ban-member-user">ban_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kick-member-user">kick_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unban-member-user">unban_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-members">get_members()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-channels">get_channels()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-text-channel-name">create_text_channel(name)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="member.html" title="previous chapter">nertivia4py.utils.Member</a></li>
+      <li>Next: <a href="get.html" title="next chapter">nertivia4py.utils.get</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ben Tettmar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/utils_docs/server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

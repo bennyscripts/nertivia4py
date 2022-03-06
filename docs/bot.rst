@@ -1,0 +1,54 @@
+nertivia4py.Bot
+================
+
+| This is the client that handles all of the events from the Nertivia Gateway.  
+| And it also handles all of the commands that are sent to the bot.  
+
+Attributes:
+    command_prefix (str): The prefix that is used to identify commands.
+    self_bot (bool): Whether or not the bot is a self bot.
+    debug (bool): Whether or not to send socket debug messages.
+
+
+run(token)
+----------
+Run the client  
+
+Args:
+    token (str): The token that is used to authenticate the bot.
+
+Raises:
+    InvalidToken: If the token is invalid.
+
+
+register_command(\*\*kwargs)
+----------------------------
+Register a command.  
+
+Args:
+    name (str): The name of the command.
+    description (str): The description of the command.
+    usage (str): The usage of the command.
+    aliases (list): A list of aliases for the command.
+    callback (func): The callback function for the command. / What the command does.
+
+Aliases:
+    add_command(\*\*kwargs)
+
+Raises:
+    CommandAlreadyExists: If the command already exists.
+
+
+load_commands(lib_path, commands_class)
+---------------------------------------
+Load commands from a separate file.
+
+Args:
+    lib_path (str): The path to the file. (example: commands.general)
+    commands_class (str): The name of the class in the file. (example: Commands)
+
+Aliases:
+    add_commands(lib_path, commands_class)
+
+Raises:
+    AttributeError: If the class is not found.

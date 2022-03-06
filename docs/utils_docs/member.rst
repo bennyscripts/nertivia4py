@@ -1,0 +1,27 @@
+nertivia4py.utils.Member
+========================
+The same as user.User but has ban and kick functions.
+
+Attributes:
+    id (int): The ID of the member.
+    username (str): The username of the member.
+    tag (str): The tag of the member.
+    avatar (str): The avatar of the member.
+    type (str): The type of the member.
+    server_id (int): The ID of the server the member is in.
+
+
+ban()
+-----
+Bans the member.
+
+Returns:
+    bool: Whether the member was banned or not.
+
+
+kick()
+------
+kicks the member.
+
+Returns:
+    bool: Whether the member was kicked or not.
