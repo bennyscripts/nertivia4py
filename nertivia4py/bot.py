@@ -123,20 +123,23 @@ class Bot:
         self.commands.append(command.Command(name, description, usage, aliases, callback))
         self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
 
-    def register_cog(self, cog):
+    def load_commands(self, lib_path, commands_class: str = "Commands"):
         """
-        Register a cog.  
-        The class in the cog must be called Commands.  
+        Load commands from a separate file.
 
         Args:
-            cog (str): The name of the cog file.
+            lib_path (str): The path to the file. (example: commands.general)
+            commands_class (str): The name of the class in the file. (example: Commands)
 
         Aliases:
-            add_cog(cog)
+            add_commands(lib_path, commands_class)
+
+        Raises:
+            AttributeError: If the class is not found.
         """
 
-        lib = importlib.import_module(cog)
-        commands_class = getattr(lib, "Commands")
+        lib = importlib.import_module(lib_path)
+        commands_class = getattr(lib, commands_class)
 
         commands = commands_class(self)
         commands.register()
@@ -167,4 +170,5 @@ class Bot:
         return decorator
 
     add_command = register_command
-    add_cog = register_cog
+    add_commands = load_commands
+    register_commands = load_commands
