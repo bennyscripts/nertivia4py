@@ -1,4 +1,14 @@
 class Embed:
+    """
+    Nertivia HTMLEmbed
+    
+    Attributes:
+        title (str): The title of the embed.
+        description (str): The description of the embed.
+        colour (str): The colour of the embed.
+        color (str): The color of the embed.
+    """
+
     def __init__(self, title, description="", colour="#ffffff", color="#ffffff"):
         if colour == "":
             colour = color

@@ -7,6 +7,18 @@ from . import textchannel
 from . import dmchannel
 
 class Message:
+    """
+    Nertivia Message
+
+    Attributes:
+        id (int): The ID of the message.
+        channel (textchannel.TextChannel): The channel the message was sent in.
+        creator (user.User): The author of the message.
+        content (str): The content of the message.
+        created (str): The time the message was created.
+
+    """
+
     def __init__(self, id, channelId, creator="", content="", created="") -> None:
         if creator == "" or content == "" or created == "":
             response = requests.get(
@@ -50,6 +62,18 @@ class Message:
         return self.content
 
     def reply(self, content:str = "", embed: embed.Embed = None, buttons: list = None) -> "Message":
+        """
+        Replies to the message.
+
+        Args:
+            content (str): The content of the message.
+            embed (embed.Embed): The embed of the message.
+            buttons (list of button.Button): A list of buttons to add to the message.
+
+        Returns:
+            Message: The message that was sent.
+        """
+
         body={"message": f"<m{self.id}>"+content}
         if embed != None:
             body["htmlEmbed"] = embed.json
@@ -66,7 +90,19 @@ class Message:
 
         return Message(response.json()["messageCreated"]["messageID"], self.channel.id)
 
-    def edit(self, content, embed: embed.Embed = None, buttons: list = None):
+    def edit(self, content, embed: embed.Embed = None, buttons: list = None) -> dict:
+        """
+        Edits the message.
+
+        Args:
+            content (str): The content of the message.
+            embed (embed.Embed): The embed of the message.
+            buttons (list of button.Button): A list of buttons to add to the message.
+
+        Returns:
+            dict: The response of the request.
+        """
+
         content = str(content)
         body = {"message": content}
         if embed is not None:
@@ -84,7 +120,14 @@ class Message:
 
         return response.json()
 
-    def delete(self):
+    def delete(self) -> dict:
+        """
+        Deletes the message.
+            
+        Returns:
+            dict: The response of the request.
+        """
+
         response = requests.delete(
             f"https://nertivia.net/api/messages/{self.id}/channels/{self.channel.id}",
             headers={"authorization": extra.Extra.getauthtoken()}
@@ -92,7 +135,17 @@ class Message:
 
         return response.json()
 
-    def add_reaction(self, emoji):
+    def add_reaction(self, emoji) -> dict:
+        """
+        Adds a reaction to the message.
+
+        Args:
+            emoji (str): The emoji to add.
+
+        Returns:
+            dict: The response of the request.
+        """
+
         response = requests.post(
             f"https://nertivia.net/api/messages/{self.id}/channels/{self.channel.id}/reactions",
             headers={"authorization": extra.Extra.getauthtoken()},
@@ -101,7 +154,17 @@ class Message:
 
         return response.json()
 
-    def remove_reaction(self, emoji):
+    def remove_reaction(self, emoji) -> dict:
+        """
+        Removes a reaction to the message.
+
+        Args:
+            emoji (str): The emoji to remove.
+
+        Returns:
+            dict: The response of the request.
+        """
+
         response = requests.delete(
             f"https://nertivia.net/api/messages/{self.id}/channels/{self.channel.id}/reactions",
             headers={"authorization": extra.Extra.getauthtoken()},

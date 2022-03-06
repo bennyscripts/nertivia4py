@@ -12,6 +12,17 @@ from .utils import message
 from .utils import exceptions
 
 class Bot:
+    """
+    Nertivia Gateway Client  
+    This is the client that handles all of the events from the Nertivia Gateway.  
+    And it also handles all of the commands that are sent to the bot.  
+
+    Attributes:
+        command_prefix (str): The prefix that is used to identify commands.
+        self_bot (bool): Whether or not the bot is a self bot.
+        debug (bool): Whether or not to send socket debug messages.
+    """
+
     def __init__(self, command_prefix, self_bot=False, debug=False) -> None:
         self.socket = socketio.Client(engineio_logger=False, logger=debug)
         self.socket_ip = "https://nertivia.net/"
@@ -26,11 +37,24 @@ class Bot:
         extra.Extra.setauthtoken(self.token)
 
     def run(self, token) -> None:
+        """
+        Run the client  
+
+        Args:
+            token (str): The token that is used to authenticate the bot.
+
+        Raises:
+            InvalidToken: If the token is invalid.
+        """
+
         extra.Extra.setauthtoken(token)
 
         self.token = token
 
         user_response = requests.get("https://nertivia.net/api/user", headers={"authorization": extra.Extra.getauthtoken()})
+        if user_response.status_code != 200:
+            raise exceptions.InvalidToken("Token is invalid.")
+
         user_obj = user_response.json()["user"]
 
         self.user = user.User(user_obj["id"])
@@ -66,6 +90,23 @@ class Bot:
                         except Exception as e: raise exceptions.CommandError(e)
 
     def register_command(self, **kwargs) -> None:
+        """
+        Register a command.  
+
+        Args:
+            name (str): The name of the command.
+            description (str): The description of the command.
+            usage (str): The usage of the command.
+            aliases (list): A list of aliases for the command.
+            callback (func): The callback function for the command. / What the command does.
+
+        Aliases:
+            add_command(**kwargs)
+
+        Raises:
+            CommandAlreadyExists: If the command already exists.
+        """
+
         name = kwargs["name"]
         description = kwargs["description"] if "description" in kwargs else ""
         usage = kwargs["usage"] if "usage" in kwargs else ""
@@ -83,6 +124,17 @@ class Bot:
         self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
 
     def register_cog(self, cog):
+        """
+        Register a cog.  
+        The class in the cog must be called Commands.  
+
+        Args:
+            cog (str): The name of the cog file.
+
+        Aliases:
+            add_cog(cog)
+        """
+
         lib = importlib.import_module(cog)
         commands_class = getattr(lib, "Commands")
 

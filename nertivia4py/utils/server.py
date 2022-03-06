@@ -10,6 +10,18 @@ from . import user
 from . import extra
 
 class Server:
+    """
+    Nertivia Server
+
+    Attributes:
+        id (str): The server's ID.
+        name (str): The server's name.
+        avatar (str): The server's avatar.
+        default_channel_id (str): The server's default channel ID.
+        created (str): The server's creation date.
+        banner (str): The server's banner.
+    """
+
     def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner="") -> None:
         if name == "" or avatar == "" or default_channel_id == "" or created == "" or banner == "":
             response = requests.get(
@@ -39,7 +51,17 @@ class Server:
     def __str__(self):
         return f"{self.name}"
 
-    def edit(self, name):
+    def edit(self, name) -> dict:
+        """
+        Edits the server
+
+        Args:
+            name (str): The new name of the server.
+
+        Returns:
+            dict: The response of the request.
+        """
+
         response = requests.patch(
             f"https://nertivia.net/api/servers/{self.id}",
             headers={"authorization": extra.Extra.getauthtoken()},
@@ -51,7 +73,14 @@ class Server:
         self.name = response.json()["name"]
         return response.json()
 
-    def delete(self):
+    def delete(self) -> dict:
+        """
+        Deletes the server
+
+        Returns:
+            dict: The response of the request.
+        """
+
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}",
             headers={"authorization": extra.Extra.getauthtoken()}
@@ -60,6 +89,14 @@ class Server:
         return response.json()
 
     def get_bans(self):
+        """
+        Gets a list of banned users from the server
+
+        Returns:
+            list: A list of banned users.
+            None: If the request failed.
+        """
+
         response = requests.get(
             f"https://nertivia.net/api/servers/{self.id}/bans",
             headers={"authorization": extra.Extra.getauthtoken()}
@@ -79,6 +116,16 @@ class Server:
             return False
 
     def ban_member(self, user: user.User) -> bool:
+        """
+        Bans a member from the server
+
+        Args:
+            user (user.User): The user to ban.
+
+        Returns:
+            bool: Whether the request was successful.
+        """
+
         userId = user.id
         response = requests.put(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
@@ -91,6 +138,16 @@ class Server:
             return False
 
     def kick_member(self, user: user.User) -> bool:
+        """
+        Kicks a member from the server
+
+        Args:
+            user (user.User): The user to kick.
+
+        Returns:
+            bool: Whether the request was successful.
+        """
+
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/members/{userId}",
@@ -102,7 +159,17 @@ class Server:
         else:
             return False
 
-    def unban_member(self, user: user.User):
+    def unban_member(self, user: user.User) -> dict:
+        """
+        Unbans a member from the server
+
+        Args:
+            user (user.User): The user to unban.
+
+        Returns:
+            dict: The response of the request.
+        """
+
         userId = user.id
         response = requests.delete(
             f"https://nertivia.net/api/servers/{self.id}/bans/{userId}",
@@ -122,6 +189,16 @@ class Server:
         self.members = members
 
     def get_members(self) -> list:
+        """
+        Gets a list of members from the server
+
+        Aliases:
+            get_all_members()
+
+        Returns:
+            list: A list of members.
+        """
+
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": extra.Extra.getauthtoken()})
@@ -149,6 +226,16 @@ class Server:
         self.channels = channels
 
     def get_channels(self) -> list:
+        """
+        Gets a list of channels from the server
+
+        Aliases:
+            get_all_channels()
+
+        Returns:
+            list: A list of channels.
+        """
+
         socket = socketio.Client()
         socket.connect("https://nertivia.net/", namespaces=["/"], transports=["websocket"])
         socket.emit("authentication", {"token": extra.Extra.getauthtoken()})
@@ -163,6 +250,16 @@ class Server:
         return self.channels
 
     def create_text_channel(self, name):
+        """
+        Creates a text chget_all_membersannel in the server.
+
+        Args:
+            name (str): The name of the channel.
+                
+        Returns:
+            textchannel.TextChannel: The channel that was created.
+        """
+
         response = requests.put(
             f"https://nertivia.net/api/servers/{self.id}/channels",
             headers={"authorization": extra.Extra.getauthtoken()},
