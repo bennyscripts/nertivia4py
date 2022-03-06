@@ -11,7 +11,7 @@ from .utils import message
 from .utils import exceptions
 
 class Bot:
-    def __init__(self, command_prefix, debug=False) -> None:
+    def __init__(self, command_prefix, self_bot=False, debug=False) -> None:
         self.socket = socketio.Client(engineio_logger=False, logger=debug)
         self.socket_ip = "https://nertivia.net/"
 
@@ -20,6 +20,7 @@ class Bot:
 
         self.user = None
         self.token = ""
+        self.self_bot = self_bot
 
         extra.Extra.setauthtoken(self.token)
 
@@ -39,20 +40,29 @@ class Bot:
 
     def _command_event_handler(self, event):
         msg = message.Message(event["message"]["messageID"], event["message"]["channelId"])
+        command_can_be_run = False
 
-        if msg.content.startswith(self.command_prefix):
-            command = msg.content.replace(self.command_prefix, "")
-            args = shlex.split(command)
-            command = args[0]
-            args.pop(0)
+        if self.self_bot:
+            if msg.creator.id == self.user.id:
+                command_can_be_run = True
+        else:
+            if msg.creator.id != self.user.id:
+                command_can_be_run = True
 
-            for cmd in self.commands:
-                if cmd.name == command or command in cmd.aliases:
-                    callback = cmd.get_callback()
+        if command_can_be_run:
+            if msg.content.startswith(self.command_prefix):
+                command = msg.content.replace(self.command_prefix, "")
+                args = shlex.split(command)
+                command = args[0]
+                args.pop(0)
 
-                    try: callback(msg, args)
-                    except TypeError: callback(msg)
-                    except Exception as e: raise exceptions.CommandError(e)
+                for cmd in self.commands:
+                    if cmd.name == command or command in cmd.aliases:
+                        callback = cmd.get_callback()
+
+                        try: callback(msg, args)
+                        except TypeError: callback(msg)
+                        except Exception as e: raise exceptions.CommandError(e)
 
     def event(self, *args):
         eventname = args[0].__name__
