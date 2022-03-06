@@ -251,7 +251,7 @@ class Server:
 
     def create_text_channel(self, name):
         """
-        Creates a text chget_all_membersannel in the server.
+        Creates a text channel in the server.
 
         Args:
             name (str): The name of the channel.
