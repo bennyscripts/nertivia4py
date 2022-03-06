@@ -11,3 +11,4 @@ selfbot.py
 @everyone*
 dist/*
 *.egg-info
+docs-2/*
