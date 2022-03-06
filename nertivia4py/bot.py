@@ -4,7 +4,7 @@ import requests
 import importlib
 
 from .gateway import events
-from .gateway import command
+from .commands import command
 
 from .utils import user
 from .utils import extra
