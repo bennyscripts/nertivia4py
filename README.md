@@ -28,3 +28,6 @@ Support Nertivia server : https://nertivia.net/i/nertivia4py
 > ```  
 > 
 > For more examples, take a look at the examples folder in the github repo.
+
+> Need help? Checkout the documentation on Read the Docs!  
+> https://nertivia4py.readthedocs.io/
