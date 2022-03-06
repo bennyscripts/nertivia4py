@@ -34,6 +34,12 @@ class Bot:
         self.token = ""
         self.self_bot = self_bot
 
+        self.other_settings = {
+            "on_command_callback": None,
+            "on_command_error_callback": None,
+            "on_message_callback": None
+        }
+
         extra.Extra.setauthtoken(self.token)
 
     def run(self, token) -> None:
@@ -63,9 +69,13 @@ class Bot:
         self.socket.emit("authentication", {"token": token})
         self.socket.wait()
 
-    def _command_event_handler(self, event):
+    def _on_message_event_handler(self, event):
         msg = message.Message(event["message"]["messageID"], event["message"]["channelId"])
         command_can_be_run = False
+        is_a_command = False
+        
+        if self.other_settings["on_message_callback"] is not None:
+            self.other_settings["on_message_callback"](msg)
 
         if self.self_bot:
             if msg.creator.id == self.user.id:
@@ -74,8 +84,11 @@ class Bot:
             if msg.creator.id != self.user.id:
                 command_can_be_run = True
 
+        if msg.content.startswith(self.command_prefix):
+            is_a_command = True
+
         if command_can_be_run:
-            if msg.content.startswith(self.command_prefix):
+            if is_a_command:
                 command = msg.content.replace(self.command_prefix, "")
                 args = shlex.split(command)
                 command = args[0]
@@ -85,9 +98,33 @@ class Bot:
                     if cmd.name == command or command in cmd.aliases:
                         callback = cmd.get_callback()
 
-                        try: callback(msg, args)
-                        except TypeError: callback(msg)
-                        except Exception as e: raise exceptions.CommandError(e)
+                        try: 
+                            callback(msg, args)
+
+                        except TypeError: 
+                            callback(msg)
+
+                        except Exception as e: 
+                            if self.other_settings["on_command_error_callback"] is not None:
+                                self.other_settings["on_command_error_callback"](msg, str(e))
+
+                            else:
+                                raise exceptions.CommandError(str(e))
+
+                        try:
+                            if self.other_settings["on_command_callback"] is not None:
+                                self.other_settings["on_command_callback"](msg, cmd)
+
+                        except Exception as e:
+                            print(e)
+
+                    else:
+                        if self.other_settings["on_command_error_callback"] is not None:
+
+                            command_tried = msg.content.replace(self.command_prefix, "")
+                            command_tried = shlex.split(command_tried)[0]
+
+                            self.other_settings["on_command_error_callback"](msg, exceptions.CommandNotFound(f"Command {command_tried} not found."))
 
     def register_command(self, **kwargs) -> None:
         """
@@ -121,7 +158,7 @@ class Bot:
                 raise exceptions.CommandAlreadyExists("Command name already exists.")
 
         self.commands.append(command.Command(name, description, usage, aliases, callback))
-        self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
+        self.socket.on(events.Events().get_event("on_message"), self._on_message_event_handler)
 
     def load_commands(self, lib_path, commands_class: str = "Commands"):
         """
@@ -145,26 +182,38 @@ class Bot:
         commands.register()
 
     def event(self, *args):
-        eventname = args[0].__name__
+        event_name = args[0].__name__
+        event_callback = args[0]
+        custom_events = events.Events().custom_events
 
-        if not events.Events().is_valid_event(eventname):
+        if events.Events().is_valid_event(event_name) or event_name in custom_events:
+            if event_name == "on_message":
+                self.other_settings["on_message_callback"] = event_callback
+                self.socket.on(events.Events().get_event(event_name), self._on_message_event_handler)
+
+            elif event_name == "on_command":
+                self.other_settings["on_command_callback"] = event_callback
+                self.socket.on(events.Events().get_event("on_message"), self._on_message_event_handler)
+
+            elif event_name == "on_command_error":
+                self.other_settings["on_command_error_callback"] = event_callback
+                self.socket.on(events.Events().get_event("on_message"), self._on_message_event_handler)
+
+            else:
+                event = events.Events().get_event(event_name)
+                self.socket.on(event, event_callback)
+
+        else:
             raise exceptions.InvalidEvent("Event name is invalid.")
-
-        evnts = events.Events().events
-
-        for event in evnts:
-            for key, value in event.items():
-                if key == eventname:
-                    self.socket.on(value, args[0])
 
     def command(self, **kwargs):
         def decorator(func):
             command_name = kwargs["name"] if "name" in kwargs else func.__name__
-            command_description = kwargs["description"] if "description" in kwargs else "No description provided."
+            command_description = kwargs["description"] if "description" in kwargs else ""
             command_usage = kwargs["usage"] if "usage" in kwargs else ""
             command_aliases = kwargs["aliases"] if "aliases" in kwargs else []
 
-            self.register_command(command_name, command_description, command_usage, command_aliases, func)
+            self.register_command(name=command_name, description=command_description, usage=command_usage, aliases=command_aliases, callback=func)
 
             return func
         return decorator
