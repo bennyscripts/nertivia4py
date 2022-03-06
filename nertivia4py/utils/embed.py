@@ -63,6 +63,13 @@ class Embed:
         }
 
     def set_image(self, url):
+        """
+        Set the image of the embed.
+
+        Args:
+            url (str): The url of the image.
+        """
+
         self.images += 1
 
         if self.images <= 1:
@@ -81,6 +88,14 @@ class Embed:
             })
 
     def set_footer(self, text, icon_url=""):
+        """
+        Set the footer of the embed.
+            
+        Args:
+            text (str): The text of the footer.
+            icon_url (str): The url of the icon.
+        """
+
         self.footers += 1
         if self.footers <= 1:
             if icon_url != "":
