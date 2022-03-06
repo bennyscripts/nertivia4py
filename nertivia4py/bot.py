@@ -1,6 +1,7 @@
 import socketio
 import shlex
 import requests
+import importlib
 
 from .gateway import events
 from .gateway import command
@@ -64,6 +65,30 @@ class Bot:
                         except TypeError: callback(msg)
                         except Exception as e: raise exceptions.CommandError(e)
 
+    def register_command(self, **kwargs) -> None:
+        name = kwargs["name"]
+        description = kwargs["description"] if "description" in kwargs else ""
+        usage = kwargs["usage"] if "usage" in kwargs else ""
+        aliases = kwargs["aliases"] if "aliases" in kwargs else []
+        callback = kwargs["callback"] or kwargs["func"] or kwargs["function"]
+
+        for cmd in self.commands:
+            if name in aliases:
+                raise ValueError("Command name and aliases cannot be the same.")
+
+            if cmd.name == name:
+                raise exceptions.CommandAlreadyExists("Command name already exists.")
+
+        self.commands.append(command.Command(name, description, usage, aliases, callback))
+        self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
+
+    def register_cog(self, cog):
+        lib = importlib.import_module(cog)
+        commands_class = getattr(lib, "Commands")
+
+        commands = commands_class(self)
+        commands.register()
+
     def event(self, *args):
         eventname = args[0].__name__
 
@@ -84,17 +109,10 @@ class Bot:
             command_usage = kwargs["usage"] if "usage" in kwargs else ""
             command_aliases = kwargs["aliases"] if "aliases" in kwargs else []
 
-            for cmd in self.commands:
-                if command_name in command_aliases:
-                    raise ValueError("Command name and aliases cannot be the same.")
-
-                if cmd.name == command_name:
-                    raise exceptions.CommandAlreadyExists("Command name already exists.")
-
-            command_callback = func
-
-            self.commands.append(command.Command(command_name, command_description, command_usage, command_aliases, command_callback))
-            self.socket.on(events.Events().get_event("on_message"), self._command_event_handler)
+            self.register_command(command_name, command_description, command_usage, command_aliases, func)
 
             return func
         return decorator
+
+    add_command = register_command
+    add_cog = register_cog
