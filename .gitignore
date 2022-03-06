@@ -9,3 +9,4 @@ testing/*
 test.py
 selfbot.py
 @everyone*
+dist/*
