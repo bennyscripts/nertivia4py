@@ -65,7 +65,7 @@ repo.
 setup(
     name='nertivia4py',
     packages=['nertivia4py', 'nertivia4py.gateway'],
-    version='0.5',
+    version='0.6',
     license='MIT',
     description='A Python wrapper for the Nertivia API',
     long_description_content_type="text/markdown",

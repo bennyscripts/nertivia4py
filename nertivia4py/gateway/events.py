@@ -3,6 +3,7 @@ class Events:
         self.events = []
 
         self.events.append({"on_success": "authenticated"})
+        self.events.append({"on_ready": "authenticated"})
         self.events.append({"on_auth_error": "authentication_error"})
 
         self.events.append({"on_message": "message:created"})
@@ -83,3 +84,10 @@ class Events:
             for key, value in event.items():
                 if value == event_value:
                     return key
+
+    def is_valid_event(self, event_name):
+        for event in self.events:
+            for key, value in event.items():
+                if key == event_name:
+                    return True
+        return False
