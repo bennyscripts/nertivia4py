@@ -9,3 +9,6 @@ from .embed import *
 from .button import *
 from .member import *
 from .get import *
+from .colour import *
+
+Color = Colour
