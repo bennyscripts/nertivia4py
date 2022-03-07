@@ -8,14 +8,14 @@ from . import dmchannel
 
 class Message:
     """
-    Nertivia Message
+Nertivia Message
 
-    Attributes:
-    - id (int): The ID of the message.
-    - channel (textchannel.TextChannel): The channel the message was sent in.
-    - creator (user.User): The author of the message.
-    - content (str): The content of the message.
-    - created (str): The time the message was created.
+Attributes:
+- id (int): The ID of the message.
+- channel (textchannel.TextChannel): The channel the message was sent in.
+- creator (user.User): The author of the message.
+- content (str): The content of the message.
+- created (str): The time the message was created.
     """
 
     def __init__(self, id, channelId, creator="", content="", created="") -> None:
@@ -62,15 +62,15 @@ class Message:
 
     def reply(self, content:str = "", embed: embed.Embed = None, buttons: list = None) -> "Message":
         """
-        Replies to the message.
+Replies to the message.
 
-        Args:
-        - content (str): The content of the message.
-        - embed (embed.Embed): The embed of the message.
-        - buttons (list of button.Button): A list of buttons to add to the message.
+Args:
+- content (str): The content of the message.
+- embed (embed.Embed): The embed of the message.
+- buttons (list of button.Button): A list of buttons to add to the message.
 
-        Returns:
-        - Message: The message that was sent.
+Returns:
+- Message: The message that was sent.
         """
 
         body={"message": f"<m{self.id}>"+content}
@@ -91,15 +91,15 @@ class Message:
 
     def edit(self, content, embed: embed.Embed = None, buttons: list = None) -> dict:
         """
-        Edits the message.
+Edits the message.
 
-        Args:
-        - content (str): The content of the message.
-        - embed (embed.Embed): The embed of the message.
-        - buttons (list of button.Button): A list of buttons to add to the message.
+Args:
+- content (str): The content of the message.
+- embed (embed.Embed): The embed of the message.
+- buttons (list of button.Button): A list of buttons to add to the message.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         content = str(content)
@@ -121,10 +121,10 @@ class Message:
 
     def delete(self) -> dict:
         """
-        Deletes the message.
-            
-        Returns:
-        - dict: The response of the request.
+Deletes the message.
+    
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(
@@ -136,13 +136,13 @@ class Message:
 
     def add_reaction(self, emoji) -> dict:
         """
-        Adds a reaction to the message.
+Adds a reaction to the message.
 
-        Args:
-        - emoji (str): The emoji to add.
+Args:
+- emoji (str): The emoji to add.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.post(
@@ -155,13 +155,13 @@ class Message:
 
     def remove_reaction(self, emoji) -> dict:
         """
-        Removes a reaction to the message.
+Removes a reaction to the message.
 
-        Args:
-        - emoji (str): The emoji to remove.
+Args:
+- emoji (str): The emoji to remove.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(

@@ -3,16 +3,16 @@ from . import user
 
 class Member:
     """
-    Nertivia Member
-    The same as user.User but has ban and kick functions.
+Nertivia Member
+The same as user.User but has ban and kick functions.
 
-    Attributes:
-    - id (int): The ID of the member.
-    - username (str): The username of the member.
-    - tag (str): The tag of the member.
-    - avatar (str): The avatar of the member.
-    - type (str): The type of the member.
-    - server_id (int): The ID of the server the member is in.
+Attributes:
+- id (int): The ID of the member.
+- username (str): The username of the member.
+- tag (str): The tag of the member.
+- avatar (str): The avatar of the member.
+- type (str): The type of the member.
+- server_id (int): The ID of the server the member is in.
     """
 
     def __init__(self, id, username="", tag="", avatar="", type="", server_id="") -> None:
@@ -28,10 +28,10 @@ class Member:
 
     def ban(self):
         """
-        Bans the member.
+Bans the member.
 
-        Returns:
-        - bool: Whether the member was banned or not.
+Returns:
+- bool: Whether the member was banned or not.
         """
 
         server2 = server.Server(self.server_id)
@@ -39,10 +39,10 @@ class Member:
     
     def kick(self):
         """
-        Kicks the member.
+Kicks the member.
 
-        Returns:
-        - bool: Whether the member was kicked or not.
+Returns:
+- bool: Whether the member was kicked or not.
         """
 
         server2 = server.Server(self.server_id)

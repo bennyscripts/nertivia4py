@@ -1,10 +1,10 @@
 class Button:
     """
-    Nertivia Button
+Nertivia Button
 
-    Attributes:
-    - name (str): The name of the button.
-    - id (int): The id of the button.
+Attributes:
+- name (str): The name of the button.
+- id (int): The id of the button.
     """
 
     def __init__(self, name, id) -> None:

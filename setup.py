@@ -36,7 +36,7 @@ Support Nertivia server : https://nertivia.net/i/nertivia4py
 setup(
     name='nertivia4py',
     packages=['nertivia4py', 'nertivia4py.gateway', 'nertivia4py.utils', 'nertivia4py.commands'],
-    version='1.0.5',
+    version='1.0.6',
     license='MIT',
     description='A Python wrapper for the Nertivia API',
     long_description_content_type="text/markdown",

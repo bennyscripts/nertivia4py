@@ -1,12 +1,12 @@
 class Embed:
     """
-    Nertivia HTMLEmbed
-    
-    Attributes:
-    - title (str): The title of the embed.
-    - description (str): The description of the embed.
-    - colour (str): The colour of the embed.
-    - color (str): The color of the embed.
+Nertivia HTMLEmbed
+
+Attributes:
+- title (str): The title of the embed.
+- description (str): The description of the embed.
+- colour (str): The colour of the embed.
+- color (str): The color of the embed.
     """
 
     def __init__(self, title, description="", colour="#ffffff", color="#ffffff"):
@@ -64,10 +64,10 @@ class Embed:
 
     def set_image(self, url):
         """
-        Set the image of the embed.
+Set the image of the embed.
 
-        Args:
-        - url (str): The url of the image.
+Args:
+- url (str): The url of the image.
         """
 
         self.images += 1
@@ -89,11 +89,11 @@ class Embed:
 
     def set_footer(self, text, icon_url=""):
         """
-        Set the footer of the embed.
-            
-        Args:
-        - text (str): The text of the footer.
-        - icon_url (str): The url of the icon.
+Set the footer of the embed.
+    
+Args:
+- text (str): The text of the footer.
+- icon_url (str): The url of the icon.
         """
 
         self.footers += 1

@@ -11,15 +11,15 @@ from . import extra
 
 class Server:
     """
-    Nertivia Server
+Nertivia Server
 
-    Attributes:
-    - id (str): The server's ID.
-    - name (str): The server's name.
-    - avatar (str): The server's avatar.
-    - default_channel_id (str): The server's default channel ID.
-    - created (str): The server's creation date.
-    - banner (str): The server's banner.
+Attributes:
+- id (str): The server's ID.
+- name (str): The server's name.
+- avatar (str): The server's avatar.
+- default_channel_id (str): The server's default channel ID.
+- created (str): The server's creation date.
+- banner (str): The server's banner.
     """
 
     def __init__(self, id, name="", avatar="", default_channel_id="", created="", banner="") -> None:
@@ -53,13 +53,13 @@ class Server:
 
     def edit(self, name) -> dict:
         """
-        Edits the server
+Edits the server
 
-        Args:
-        - name (str): The new name of the server.
+Args:
+- name (str): The new name of the server.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.patch(
@@ -75,10 +75,10 @@ class Server:
 
     def delete(self) -> dict:
         """
-        Deletes the server
+Deletes the server
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(
@@ -90,11 +90,11 @@ class Server:
 
     def get_bans(self):
         """
-        Gets a list of banned users from the server
+Gets a list of banned users from the server
 
-        Returns:
-        - list: A list of banned users.
-        - None: If the request failed.
+Returns:
+- list: A list of banned users.
+- None: If the request failed.
         """
 
         response = requests.get(
@@ -117,13 +117,13 @@ class Server:
 
     def ban_member(self, user: user.User) -> bool:
         """
-        Bans a member from the server
+Bans a member from the server
 
-        Args:
-        - user (user.User): The user to ban.
+Args:
+- user (user.User): The user to ban.
 
-        Returns:
-        - bool: Whether the request was successful.
+Returns:
+- bool: Whether the request was successful.
         """
 
         userId = user.id
@@ -139,13 +139,13 @@ class Server:
 
     def kick_member(self, user: user.User) -> bool:
         """
-        Kicks a member from the server
+Kicks a member from the server
 
-        Args:
-        - user (user.User): The user to kick.
+Args:
+- user (user.User): The user to kick.
 
-        Returns:
-        - bool: Whether the request was successful.
+Returns:
+- bool: Whether the request was successful.
         """
 
         userId = user.id
@@ -161,13 +161,13 @@ class Server:
 
     def unban_member(self, user: user.User) -> dict:
         """
-        Unbans a member from the server
+Unbans a member from the server
 
-        Args:
-        - user (user.User): The user to unban.
+Args:
+- user (user.User): The user to unban.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         userId = user.id
@@ -190,13 +190,13 @@ class Server:
 
     def get_members(self) -> list:
         """
-        Gets a list of members from the server
+Gets a list of members from the server
 
-        Aliases:
-        - get_all_members()
+Aliases:
+- get_all_members()
 
-        Returns:
-        - list: A list of members.
+Returns:
+- list: A list of members.
         """
 
         socket = socketio.Client()
@@ -227,13 +227,13 @@ class Server:
 
     def get_channels(self) -> list:
         """
-        Gets a list of channels from the server
+Gets a list of channels from the server
 
-        Aliases:
-        - get_all_channels()
+Aliases:
+- get_all_channels()
 
-        Returns:
-        - list: A list of channels.
+Returns:
+- list: A list of channels.
         """
 
         socket = socketio.Client()
@@ -251,13 +251,13 @@ class Server:
 
     def create_text_channel(self, name):
         """
-        Creates a text channel in the server.
+Creates a text channel in the server.
 
-        Args:
-        - name (str): The name of the channel.
+Args:
+- name (str): The name of the channel.
 
-        Returns:
-        - textchannel.TextChannel: The channel that was created.
+Returns:
+- textchannel.TextChannel: The channel that was created.
         """
 
         response = requests.put(

@@ -6,16 +6,16 @@ from . import dmchannel
 
 class User:
     """
-    Nertivia User
+Nertivia User
 
-    Attributes:
-    - id (int): The ID of the user.
-    - username (str): The username of the user.
-    - tag (str): The tag of the user.
-    - avatar (str): The avatar of the user.
-    - banner (str): The banner of the user.
-    - created (str): The date the user was created.
-    - blocked (bool): Whether the user is blocked or not.
+Attributes:
+- id (int): The ID of the user.
+- username (str): The username of the user.
+- tag (str): The tag of the user.
+- avatar (str): The avatar of the user.
+- banner (str): The banner of the user.
+- created (str): The date the user was created.
+- blocked (bool): Whether the user is blocked or not.
     """
 
     def __init__(self, id, username="", tag="", avatar="", banner="", created="", blocked="") -> None:
@@ -78,10 +78,10 @@ class User:
 
     def accept_friend_request(self) -> dict:
         """
-        Accept a friend request from the user.
+Accept a friend request from the user.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.put(
@@ -99,10 +99,10 @@ class User:
 
     def decline_friend_request(self) -> dict:
         """
-        Decline a friend request from the user.
+Decline a friend request from the user.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(
@@ -141,10 +141,10 @@ class User:
 
     def unblock(self) -> dict:
         """
-        Unblock the user.
+Unblock the user.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(
@@ -162,19 +162,19 @@ class User:
 
     def dm(self, message, embed: embed.Embed = None) -> dict:
         """
-        Send a direct message to the user.
+Send a direct message to the user.
 
-        Args:
-        - message (str): The message to send.
-        - embed (embed.Embed): The embed to send.
+Args:
+- message (str): The message to send.
+- embed (embed.Embed): The embed to send.
 
-        Aliases:
-        - send_message(message, embed)
-        - send_dm(message, embed)
-        - send(message, embed)
+Aliases:
+- send_message(message, embed)
+- send_dm(message, embed)
+- send(message, embed)
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.post(

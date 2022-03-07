@@ -5,15 +5,15 @@ from . import user
 
 class Bot:
     """
-    Nertivia Bot User
+Nertivia Bot User
 
-    Attributes:
-    - id (int): The ID of the bot.
-    - username (str): The username of the bot.
-    - tag (str): The tag of the bot.
-    - avatar (str): The avatar of the bot.
-    - commands (list): The commands of the bot.
-    - creator (user.User): The creator of the bot.
+Attributes:
+- id (int): The ID of the bot.
+- username (str): The username of the bot.
+- tag (str): The tag of the bot.
+- avatar (str): The avatar of the bot.
+- commands (list): The commands of the bot.
+- creator (user.User): The creator of the bot.
     """
 
     def __init__(self, id, username="", tag="", avatar="", commands=[], creator = None) -> None:
@@ -43,10 +43,10 @@ class Bot:
 
     def delete(self) -> dict:
         """
-        Deletes the bot.
+Deletes the bot.
 
-        Returns:
-            dict: The response of the request.
+Returns:
+    dict: The response of the request.
         """
 
         response = requests.delete(

@@ -8,17 +8,17 @@ def random_colour():
 
 class Colour(Enum):
     """
-    Default colours to use in Embeds or as strings.
-    
-    Colours:
-    - Blue : BLUE
-    - Green : GREEN
-    - Yellow : YELLOW
-    - Pink : PINK
-    - Red : RED
-    - Black : BLACK
-    - White : WHITE
-    - Random : RANDOM
+Default colours to use in Embeds or as strings.
+
+Colours:
+- Blue : BLUE
+- Green : GREEN
+- Yellow : YELLOW
+- Pink : PINK
+- Red : RED
+- Black : BLACK
+- White : WHITE
+- Random : RANDOM
     """
 
     def __str__(self):

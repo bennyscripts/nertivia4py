@@ -8,12 +8,12 @@ from . import server
 
 class TextChannel:
     """
-    Nertivia Text Channel
+Nertivia Text Channel
 
-    Attributes:
-    - id (int): The ID of the channel.
-    - name (str): The name of the channel.
-    - server_id (int): The ID of the server.
+Attributes:
+- id (int): The ID of the channel.
+- name (str): The name of the channel.
+- server_id (int): The ID of the server.
     """
 
     def __init__(self, id, name="", server_id="") -> None:
@@ -34,18 +34,18 @@ class TextChannel:
 
     def send(self, content = "", embed: embed.Embed = None, buttons: list = None) -> message.Message:
         """
-        Sends a message to the channel.
+Sends a message to the channel.
 
-        Args:
-        - content (str): The content of the message.
-        - embed (embed.Embed): The embed of the message.
-        - buttons (list): A list of buttons to add to the message.
+Args:
+- content (str): The content of the message.
+- embed (embed.Embed): The embed of the message.
+- buttons (list): A list of buttons to add to the message.
 
-        Aliases:
-        - send_message(content, embed, buttons)
+Aliases:
+- send_message(content, embed, buttons)
 
-        Returns:
-        - message.Message: The message that was sent.
+Returns:
+- message.Message: The message that was sent.
         """
 
         content = str(content)
@@ -75,13 +75,13 @@ class TextChannel:
 
     def edit(self, name) -> dict:
         """
-        Edits the channel
+Edits the channel
 
-        Args:
-        - name (str): The new name of the channel.
+Args:
+- name (str): The new name of the channel.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.patch(
@@ -98,10 +98,10 @@ class TextChannel:
 
     def delete(self) -> dict:
         """
-        Deletes the channel.
+Deletes the channel.
 
-        Returns:
-        - dict: The response of the request.
+Returns:
+- dict: The response of the request.
         """
 
         response = requests.delete(
@@ -113,10 +113,10 @@ class TextChannel:
 
     def typing(self):
         """
-        Tells the channel that the user is typing.
+Tells the channel that the user is typing.
 
-        Returns:
-        - requests response: The response of the request.
+Returns:
+- requests response: The response of the request.
         """
 
         response = requests.post(
@@ -128,13 +128,13 @@ class TextChannel:
 
     def get_messages(self, amount: int = 1) -> list:
         """
-        Gets the messages from the channel.
+Gets the messages from the channel.
 
-        Args:
-        - amount (int): The amount of messages to get.
+Args:
+- amount (int): The amount of messages to get.
 
-        Returns:
-        - list: The messages.
+Returns:
+- list: The messages.
         """
 
         messages = []
@@ -160,14 +160,14 @@ class TextChannel:
 
     def get_message(self, id):
         """
-        Gets a message from the channel.
+Gets a message from the channel.
 
-        Args:
-        - id (int): The ID of the message.
+Args:
+- id (int): The ID of the message.
 
-        Returns:
-        - message.Message: The message.
-        - None: If the message doesn't exist.
+Returns:
+- message.Message: The message.
+- None: If the message doesn't exist.
         """
 
         messages = self.getMessages()
