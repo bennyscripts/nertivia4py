@@ -3,8 +3,8 @@ A Python wrapper for the Nertivia API.
 Support Nertivia server : https://nertivia.net/i/nertivia4py
 
 > ### Install
-> ```
-> pip install nertivia4py
+> ```bash
+> $ pip install nertivia4py
 > ```
 
 > ### Example 
