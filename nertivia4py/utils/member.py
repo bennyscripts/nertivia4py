@@ -7,12 +7,12 @@ class Member:
     The same as user.User but has ban and kick functions.
 
     Attributes:
-        id (int): The ID of the member.
-        username (str): The username of the member.
-        tag (str): The tag of the member.
-        avatar (str): The avatar of the member.
-        type (str): The type of the member.
-        server_id (int): The ID of the server the member is in.
+    - id (int): The ID of the member.
+    - username (str): The username of the member.
+    - tag (str): The tag of the member.
+    - avatar (str): The avatar of the member.
+    - type (str): The type of the member.
+    - server_id (int): The ID of the server the member is in.
     """
 
     def __init__(self, id, username="", tag="", avatar="", type="", server_id="") -> None:
@@ -31,7 +31,7 @@ class Member:
         Bans the member.
 
         Returns:
-            bool: Whether the member was banned or not.
+        - bool: Whether the member was banned or not.
         """
 
         server2 = server.Server(self.server_id)
@@ -42,7 +42,7 @@ class Member:
         Kicks the member.
 
         Returns:
-            bool: Whether the member was kicked or not.
+        - bool: Whether the member was kicked or not.
         """
 
         server2 = server.Server(self.server_id)

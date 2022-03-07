@@ -11,9 +11,9 @@ class TextChannel:
     Nertivia Text Channel
 
     Attributes:
-        id (int): The ID of the channel.
-        name (str): The name of the channel.
-        server_id (int): The ID of the server.
+    - id (int): The ID of the channel.
+    - name (str): The name of the channel.
+    - server_id (int): The ID of the server.
     """
 
     def __init__(self, id, name="", server_id="") -> None:
@@ -37,15 +37,15 @@ class TextChannel:
         Sends a message to the channel.
 
         Args:
-            content (str): The content of the message.
-            embed (embed.Embed): The embed of the message.
-            buttons (list): A list of buttons to add to the message.
+        - content (str): The content of the message.
+        - embed (embed.Embed): The embed of the message.
+        - buttons (list): A list of buttons to add to the message.
 
         Aliases:
-            send_message(content, embed, buttons)
+        - send_message(content, embed, buttons)
 
         Returns:
-            message.Message: The message that was sent.
+        - message.Message: The message that was sent.
         """
 
         content = str(content)
@@ -78,10 +78,10 @@ class TextChannel:
         Edits the channel
 
         Args:
-            name (str): The new name of the channel.
+        - name (str): The new name of the channel.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.patch(
@@ -101,7 +101,7 @@ class TextChannel:
         Deletes the channel.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.delete(
@@ -116,7 +116,7 @@ class TextChannel:
         Tells the channel that the user is typing.
 
         Returns:
-            requests response: The response of the request.
+        - requests response: The response of the request.
         """
 
         response = requests.post(
@@ -131,10 +131,10 @@ class TextChannel:
         Gets the messages from the channel.
 
         Args:
-            amount (int): The amount of messages to get.
+        - amount (int): The amount of messages to get.
 
         Returns:
-            list: The messages.
+        - list: The messages.
         """
 
         messages = []
@@ -163,11 +163,11 @@ class TextChannel:
         Gets a message from the channel.
 
         Args:
-            id (int): The ID of the message.
-                
+        - id (int): The ID of the message.
+
         Returns:
-            message.Message: The message.
-            None: If the message doesn't exist.
+        - message.Message: The message.
+        - None: If the message doesn't exist.
         """
 
         messages = self.getMessages()

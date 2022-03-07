@@ -8,12 +8,12 @@ class Bot:
     Nertivia Bot User
 
     Attributes:
-        id (int): The ID of the bot.
-        username (str): The username of the bot.
-        tag (str): The tag of the bot.
-        avatar (str): The avatar of the bot.
-        commands (list): The commands of the bot.
-        creator (user.User): The creator of the bot.
+    - id (int): The ID of the bot.
+    - username (str): The username of the bot.
+    - tag (str): The tag of the bot.
+    - avatar (str): The avatar of the bot.
+    - commands (list): The commands of the bot.
+    - creator (user.User): The creator of the bot.
     """
 
     def __init__(self, id, username="", tag="", avatar="", commands=[], creator = None) -> None:

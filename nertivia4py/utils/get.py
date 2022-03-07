@@ -9,10 +9,10 @@ class Get:
         Gets a Nertivia server.
 
         Args:
-            id (int): The ID of the server.
+        - id (int): The ID of the server.
 
         Returns:
-            server.Server: The server.
+        - server.Server: The server.
         """
 
         return server.Server(id)
@@ -22,10 +22,10 @@ class Get:
         Gets a Nertivia text channel.
 
         Args:
-            id (int): The ID of the text channel.
+        - id (int): The ID of the text channel.
 
         Returns:
-            textchannel.TextChannel: The text channel.
+        - textchannel.TextChannel: The text channel.
         """
 
         return textchannel.TextChannel(id)
@@ -35,10 +35,10 @@ class Get:
         Gets a Nertivia user.
 
         Args:
-            id (int): The ID of the user.
-                
+        - id (int): The ID of the user.
+
         Returns:
-            user.User: The user.
+        - user.User: The user.
         """
 
         return user.User(id)

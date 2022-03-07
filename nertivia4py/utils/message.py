@@ -11,12 +11,11 @@ class Message:
     Nertivia Message
 
     Attributes:
-        id (int): The ID of the message.
-        channel (textchannel.TextChannel): The channel the message was sent in.
-        creator (user.User): The author of the message.
-        content (str): The content of the message.
-        created (str): The time the message was created.
-
+    - id (int): The ID of the message.
+    - channel (textchannel.TextChannel): The channel the message was sent in.
+    - creator (user.User): The author of the message.
+    - content (str): The content of the message.
+    - created (str): The time the message was created.
     """
 
     def __init__(self, id, channelId, creator="", content="", created="") -> None:
@@ -66,12 +65,12 @@ class Message:
         Replies to the message.
 
         Args:
-            content (str): The content of the message.
-            embed (embed.Embed): The embed of the message.
-            buttons (list of button.Button): A list of buttons to add to the message.
+        - content (str): The content of the message.
+        - embed (embed.Embed): The embed of the message.
+        - buttons (list of button.Button): A list of buttons to add to the message.
 
         Returns:
-            Message: The message that was sent.
+        - Message: The message that was sent.
         """
 
         body={"message": f"<m{self.id}>"+content}
@@ -95,12 +94,12 @@ class Message:
         Edits the message.
 
         Args:
-            content (str): The content of the message.
-            embed (embed.Embed): The embed of the message.
-            buttons (list of button.Button): A list of buttons to add to the message.
+        - content (str): The content of the message.
+        - embed (embed.Embed): The embed of the message.
+        - buttons (list of button.Button): A list of buttons to add to the message.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         content = str(content)
@@ -125,7 +124,7 @@ class Message:
         Deletes the message.
             
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.delete(
@@ -140,10 +139,10 @@ class Message:
         Adds a reaction to the message.
 
         Args:
-            emoji (str): The emoji to add.
+        - emoji (str): The emoji to add.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.post(
@@ -159,10 +158,10 @@ class Message:
         Removes a reaction to the message.
 
         Args:
-            emoji (str): The emoji to remove.
+        - emoji (str): The emoji to remove.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.delete(

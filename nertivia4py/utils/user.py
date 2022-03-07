@@ -9,13 +9,13 @@ class User:
     Nertivia User
 
     Attributes:
-        id (int): The ID of the user.
-        username (str): The username of the user.
-        tag (str): The tag of the user.
-        avatar (str): The avatar of the user.
-        banner (str): The banner of the user.
-        created (str): The date the user was created.
-        blocked (bool): Whether the user is blocked or not.
+    - id (int): The ID of the user.
+    - username (str): The username of the user.
+    - tag (str): The tag of the user.
+    - avatar (str): The avatar of the user.
+    - banner (str): The banner of the user.
+    - created (str): The date the user was created.
+    - blocked (bool): Whether the user is blocked or not.
     """
 
     def __init__(self, id, username="", tag="", avatar="", banner="", created="", blocked="") -> None:
@@ -59,7 +59,7 @@ class User:
         Send a friend request to the user.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.post(
@@ -81,7 +81,7 @@ class User:
         Accept a friend request from the user.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.put(
@@ -102,7 +102,7 @@ class User:
         Decline a friend request from the user.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.delete(
@@ -123,7 +123,7 @@ class User:
         Block the user.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.post(
@@ -144,7 +144,7 @@ class User:
         Unblock the user.
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.delete(
@@ -165,16 +165,16 @@ class User:
         Send a direct message to the user.
 
         Args:
-            message (str): The message to send.
-            embed (embed.Embed): The embed to send.
+        - message (str): The message to send.
+        - embed (embed.Embed): The embed to send.
 
         Aliases:
-            send_message(message, embed)
-            send_dm(message, embed)
-            send(message, embed)
+        - send_message(message, embed)
+        - send_dm(message, embed)
+        - send(message, embed)
 
         Returns:
-            dict: The response of the request.
+        - dict: The response of the request.
         """
 
         response = requests.post(
