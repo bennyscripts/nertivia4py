@@ -12,3 +12,4 @@ selfbot.py
 dist/*
 *.egg-info
 docs-2/*
+build/*
