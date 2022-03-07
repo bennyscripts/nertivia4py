@@ -2,12 +2,10 @@ import socketio
 import shlex
 import requests
 import importlib
-import inspect
 
 from .gateway import events
 
 from .commands import command
-from .commands import cog
 
 from .utils import user
 from .utils import extra
@@ -170,7 +168,6 @@ class Bot:
         Args:
             lib_path (str): The path to the file. (example: commands.general)
             commands_class (str): The name of the class in the file. (example: Commands)
-            cog_name (str): The name of the cog. (example: general)
 
         Aliases:
             add_commands(lib_path, commands_class)
