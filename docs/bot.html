@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="nertivia4py.utils.Bot" href="utils/bot.html" /><link rel="prev" title="Quickstart" href="quickstart.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.Bot - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.Bot - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="utils/textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,106 +204,82 @@
         <article role="main">
           <section id="nertivia4py-bot">
 <h1>nertivia4py.Bot<a class="headerlink" href="#nertivia4py-bot" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.Bot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.</span></span><span class="sig-name descname"><span class="pre">Bot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">self_bot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.Bot" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia Gateway Client  
-This is the client that handles all of the events from the Nertivia Gateway.  
-And it also handles all of the commands that are sent to the bot.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Bot user gateway client.</div>
+<div class="line">This is the client that handles all of the events from the Nertivia Gateway.</div>
+<div class="line">And it also handles all of the commands that are sent to the bot.</div>
+</div>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>command_prefix (str): The prefix that is used to identify commands.
-self_bot (bool): Whether or not the bot is a self bot.
-debug (bool): Whether or not to send socket debug messages.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>command_prefix (str): The prefix that is used to identify commands.</p></li>
+<li><p>self_bot (bool): Whether or not the bot is a self bot.</p></li>
+<li><p>debug (bool): Whether or not to send socket debug messages.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.add_command">
-<span class="sig-name descname"><span class="pre">add_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nertivia4py.Bot.add_command" title="Permalink to this definition">#</a></dt>
-<dd><p>Register a command.</p>
+</div></blockquote>
+<section id="run-token">
+<h2>run(token)<a class="headerlink" href="#run-token" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Run the client</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The name of the command.
-description (str): The description of the command.
-usage (str): The usage of the command.
-aliases (list): A list of aliases for the command.
-callback (func): The callback function for the command. / What the command does.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>token (str): The token that is used to authenticate the bot.</p></li>
+</ul>
 </dd>
-<dt>Aliases:</dt><dd><p>add_command(<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs)</p>
-</dd>
-<dt>Raises:</dt><dd><p>CommandAlreadyExists: If the command already exists.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>InvalidToken: If the token is invalid.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.add_commands">
-<span class="sig-name descname"><span class="pre">add_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lib_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Commands'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.Bot.add_commands" title="Permalink to this definition">#</a></dt>
-<dd><p>Load commands from a separate file.</p>
+</div></blockquote>
+</section>
+<section id="register-command-kwargs">
+<h2>register_command(**kwargs)<a class="headerlink" href="#register-command-kwargs" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Register a command.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>lib_path (str): The path to the file. (example: commands.general)
-commands_class (str): The name of the class in the file. (example: Commands)</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>name (str): The name of the command.</p></li>
+<li><p>description (str): The description of the command.</p></li>
+<li><p>usage (str): The usage of the command.</p></li>
+<li><p>aliases (list): A list of aliases for the command.</p></li>
+<li><p>callback (func): The callback function for the command. / What the command does.</p></li>
+</ul>
 </dd>
-<dt>Aliases:</dt><dd><p>add_commands(lib_path, commands_class)</p>
+<dt>Aliases:</dt><dd><ul class="simple">
+<li><p>add_command(**kwargs)</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>AttributeError: If the class is not found.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>CommandAlreadyExists: If the command already exists.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.load_commands">
-<span class="sig-name descname"><span class="pre">load_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lib_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Commands'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.Bot.load_commands" title="Permalink to this definition">#</a></dt>
-<dd><p>Load commands from a separate file.</p>
+</div></blockquote>
+</section>
+<section id="load-commands-lib-path-commands-class">
+<h2>load_commands(lib_path, commands_class)<a class="headerlink" href="#load-commands-lib-path-commands-class" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Load commands from a separate file.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>lib_path (str): The path to the file. (example: commands.general)
-commands_class (str): The name of the class in the file. (example: Commands)</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>lib_path (str): The path to the file. (example: commands.general)</p></li>
+<li><p>commands_class (str): The name of the class in the file. (example: Commands)</p></li>
+</ul>
 </dd>
-<dt>Aliases:</dt><dd><p>add_commands(lib_path, commands_class)</p>
+<dt>Aliases:</dt><dd><ul class="simple">
+<li><p>add_commands(lib_path, commands_class)</p></li>
+</ul>
 </dd>
-<dt>Raises:</dt><dd><p>AttributeError: If the class is not found.</p>
+<dt>Raises:</dt><dd><ul class="simple">
+<li><p>AttributeError: If the class is not found.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.register_command">
-<span class="sig-name descname"><span class="pre">register_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nertivia4py.Bot.register_command" title="Permalink to this definition">#</a></dt>
-<dd><p>Register a command.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The name of the command.
-description (str): The description of the command.
-usage (str): The usage of the command.
-aliases (list): A list of aliases for the command.
-callback (func): The callback function for the command. / What the command does.</p>
-</dd>
-<dt>Aliases:</dt><dd><p>add_command(<a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs)</p>
-</dd>
-<dt>Raises:</dt><dd><p>CommandAlreadyExists: If the command already exists.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.register_commands">
-<span class="sig-name descname"><span class="pre">register_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lib_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Commands'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.Bot.register_commands" title="Permalink to this definition">#</a></dt>
-<dd><p>Load commands from a separate file.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>lib_path (str): The path to the file. (example: commands.general)
-commands_class (str): The name of the class in the file. (example: Commands)</p>
-</dd>
-<dt>Aliases:</dt><dd><p>add_commands(lib_path, commands_class)</p>
-</dd>
-<dt>Raises:</dt><dd><p>AttributeError: If the class is not found.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.Bot.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nertivia4py.Bot.run" title="Permalink to this definition">#</a></dt>
-<dd><p>Run the client</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>token (str): The token that is used to authenticate the bot.</p>
-</dd>
-<dt>Raises:</dt><dd><p>InvalidToken: If the token is invalid.</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -350,8 +327,29 @@ commands_class (str): The name of the class in the file. (example: Commands)</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.Bot</a><ul>
+<li><a class="reference internal" href="#run-token">run(token)</a></li>
+<li><a class="reference internal" href="#register-command-kwargs">register_command(**kwargs)</a></li>
+<li><a class="reference internal" href="#load-commands-lib-path-commands-class">load_commands(lib_path, commands_class)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

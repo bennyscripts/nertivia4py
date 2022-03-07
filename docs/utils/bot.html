@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.TextChannel" href="textchannel.html" /><link rel="prev" title="nertivia4py.Bot" href="../bot.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.Bot - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.Bot - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,29 +204,32 @@
         <article role="main">
           <section id="nertivia4py-utils-bot">
 <h1>nertivia4py.utils.Bot<a class="headerlink" href="#nertivia4py-utils-bot" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.Bot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">Bot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Bot" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia Bot User</p>
+<blockquote>
+<div><p>Nertivia bot user.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The ID of the bot.
-username (str): The username of the bot.
-tag (str): The tag of the bot.
-avatar (str): The avatar of the bot.
-commands (list): The commands of the bot.
-creator (user.User): The creator of the bot.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the bot.</p></li>
+<li><p>username (str): The username of the bot.</p></li>
+<li><p>tag (str): The tag of the bot.</p></li>
+<li><p>avatar (str): The avatar of the bot.</p></li>
+<li><p>commands (list): The commands of the bot.</p></li>
+<li><p>creator (user.User): The creator of the bot.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Bot.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.Bot.delete" title="Permalink to this definition">#</a></dt>
-<dd><p>Deletes the bot.</p>
+</div></blockquote>
+<section id="delete">
+<h2>delete()<a class="headerlink" href="#delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Deletes the bot.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>dict: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -273,8 +277,27 @@ creator (user.User): The creator of the bot.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.Bot</a><ul>
+<li><a class="reference internal" href="#delete">delete()</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

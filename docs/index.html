@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Quickstart" href="quickstart.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>Nertivia4PY 1.0.1 documentation</title>
+        <title>Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="#"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="utils/textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -230,17 +231,76 @@
 <li class="toctree-l2"><a class="reference internal" href="quickstart.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bot.html">nertivia4py.Bot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/bot.html">nertivia4py.utils.Bot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/textchannel.html">nertivia4py.utils.TextChannel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/dmchannel.html">nertivia4py.utils.DMChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bot.html">nertivia4py.Bot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bot.html#run-token">run(token)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bot.html#register-command-kwargs">register_command(**kwargs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bot.html#load-commands-lib-path-commands-class">load_commands(lib_path, commands_class)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/bot.html">nertivia4py.utils.Bot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/bot.html#delete">delete()</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/textchannel.html">nertivia4py.utils.TextChannel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#send-content-embed-buttons">send(content, embed, buttons)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#edit-name">edit(name)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#delete">delete()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#typing">typing()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#get-messages-amount">get_messages(amount)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/textchannel.html#get-message-id">get_message(id)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/dmchannel.html">nertivia4py.utils.DMChannel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/dmchannel.html#send-content-embed-buttons">send(content, embed, buttons)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="utils/button.html">nertivia4py.utils.Button</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/embed.html">nertivia4py.utils.Embed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/message.html">nertivia4py.utils.Message</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/user.html">nertivia4py.utils.User</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/member.html">nertivia4py.utils.Member</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/colour.html">nertivia4py.utils.Colour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/embed.html">nertivia4py.utils.Embed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/embed.html#set-image-url">set_image(url)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/embed.html#set-footer-text-icon-url">set_footer(text, icon_url)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/message.html">nertivia4py.utils.Message</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/message.html#reply-content-embed-buttons">reply(content, embed, buttons)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/message.html#edit-content-embed-buttons">edit(content, embed, buttons)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/message.html#delete">delete()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/message.html#add-reaction-emoji">add_reaction(emoji)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/message.html#remove-reaction-emoji">remove_reaction(emoji)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/user.html">nertivia4py.utils.User</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#send-friend-request">send_friend_request()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#accept-friend-request">accept_friend_request()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#decline-friend-request">decline_friend_request()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#block">block()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#unblock">unblock()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/user.html#dm-message-embed">dm(message, embed)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/member.html">nertivia4py.utils.Member</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/member.html#ban">ban()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/member.html#kick">kick()</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/server.html">nertivia4py.utils.Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#edit-name">edit(name)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#delete">delete()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#get-bans">get_bans()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#ban-member-user">ban_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#kick-member-user">kick_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#unban-member-user">unban_member(user)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#get-members">get_members()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#get-channels">get_channels()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/server.html#create-text-channel-name">create_text_channel(name)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils/get.html">nertivia4py.utils.get</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils/get.html#get-server-id">get_server(id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/get.html#get-text-channel-id">get_text_channel(id)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/get.html#get-user-id">get_user(id)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="events.html">nertivia4py.gateway.Events</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="events.html#nertivia4py-bot-on-success">nertivia4py.Bot.on_success</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events.html#nertivia4py-bot-on-auth-error">nertivia4py.Bot.on_auth_error</a></li>

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Button" href="button.html" /><link rel="prev" title="nertivia4py.utils.TextChannel" href="textchannel.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Embed" href="embed.html" /><link rel="prev" title="nertivia4py.utils.Button" href="button.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.DMChannel - Nertivia4PY 1.0.6 documentation</title>
+        <title>nertivia4py.utils.Colour - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -160,9 +160,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../bot.html">nertivia4py.Bot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bot.html">nertivia4py.utils.Bot</a></li>
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.DMChannel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
-<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
@@ -196,46 +196,30 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="nertivia4py-utils-dmchannel">
-<h1>nertivia4py.utils.DMChannel<a class="headerlink" href="#nertivia4py-utils-dmchannel" title="Permalink to this headline">#</a></h1>
+          <section id="nertivia4py-utils-colour">
+<h1>nertivia4py.utils.Colour<a class="headerlink" href="#nertivia4py-utils-colour" title="Permalink to this headline">#</a></h1>
 <blockquote>
-<div><p>User direct message channel.
-Same as Text Channel but is used to send messages to a user.</p>
+<div><p>Default hex colours for embeds or strings.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><ul class="simple">
-<li><p>id (int): The ID of the channel.</p></li>
+<dt>Colours:</dt><dd><ul class="simple">
+<li><p>Blue : BLUE</p></li>
+<li><p>Green : GREEN</p></li>
+<li><p>Yellow : YELLOW</p></li>
+<li><p>Pink : PINK</p></li>
+<li><p>Red : RED</p></li>
+<li><p>Black : BLACK</p></li>
+<li><p>White : WHITE</p></li>
+<li><p>Random : RANDOM</p></li>
 </ul>
 </dd>
 </dl>
 </div></blockquote>
-<section id="send-content-embed-buttons">
-<h2>send(content, embed, buttons)<a class="headerlink" href="#send-content-embed-buttons" title="Permalink to this headline">#</a></h2>
-<blockquote>
-<div><p>Sends a message to the channel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><ul class="simple">
-<li><p>content (str): The content of the message.</p></li>
-<li><p>embed (embed.Embed): The embed of the message.</p></li>
-<li><p>buttons (list): The buttons of the message.</p></li>
-</ul>
-</dd>
-<dt>Aliases:</dt><dd><ul class="simple">
-<li><p>send_message(content, embed, buttons)</p></li>
-</ul>
-</dd>
-<dt>Returns:</dt><dd><ul class="simple">
-<li><p>dict: The response of the request.</p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
 </section>
 
         </article>
@@ -243,23 +227,23 @@ Same as Text Channel but is used to send messages to a user.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="button.html">
+          <a class="next-page" href="embed.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">nertivia4py.utils.Button</div>
+                <div class="title">nertivia4py.utils.Embed</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="textchannel.html">
+          <a class="prev-page" href="button.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">nertivia4py.utils.TextChannel</div>
+                <div class="title">nertivia4py.utils.Button</div>
                 
               </div>
             </a>
@@ -283,27 +267,8 @@ Same as Text Channel but is used to send messages to a user.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">nertivia4py.utils.DMChannel</a><ul>
-<li><a class="reference internal" href="#send-content-embed-buttons">send(content, embed, buttons)</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

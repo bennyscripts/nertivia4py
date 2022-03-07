@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Server" href="server.html" /><link rel="prev" title="nertivia4py.utils.User" href="user.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.Member - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.Member - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,39 +204,47 @@
         <article role="main">
           <section id="nertivia4py-utils-member">
 <h1>nertivia4py.utils.Member<a class="headerlink" href="#nertivia4py-utils-member" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.Member">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">Member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Member" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia Member
-The same as user.User but has ban and kick functions.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Nertivia server member.</div>
+<div class="line">The same as user.User but has ban and kick functions.</div>
+</div>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The ID of the member.
-username (str): The username of the member.
-tag (str): The tag of the member.
-avatar (str): The avatar of the member.
-type (str): The type of the member.
-server_id (int): The ID of the server the member is in.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the member.</p></li>
+<li><p>username (str): The username of the member.</p></li>
+<li><p>tag (str): The tag of the member.</p></li>
+<li><p>avatar (str): The avatar of the member.</p></li>
+<li><p>type (str): The type of the member.</p></li>
+<li><p>server_id (int): The ID of the server the member is in.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Member.ban">
-<span class="sig-name descname"><span class="pre">ban</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Member.ban" title="Permalink to this definition">#</a></dt>
-<dd><p>Bans the member.</p>
+</div></blockquote>
+<section id="ban">
+<h2>ban()<a class="headerlink" href="#ban" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Bans the member.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>bool: Whether the member was banned or not.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>bool: Whether the member was banned or not.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Member.kick">
-<span class="sig-name descname"><span class="pre">kick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Member.kick" title="Permalink to this definition">#</a></dt>
-<dd><p>Kicks the member.</p>
+</div></blockquote>
+</section>
+<section id="kick">
+<h2>kick()<a class="headerlink" href="#kick" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>kicks the member.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>bool: Whether the member was kicked or not.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>bool: Whether the member was kicked or not.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -283,8 +292,28 @@ server_id (int): The ID of the server the member is in.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.Member</a><ul>
+<li><a class="reference internal" href="#ban">ban()</a></li>
+<li><a class="reference internal" href="#kick">kick()</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

@@ -24,6 +24,7 @@ Navigation
       utils/textchannel
       utils/dmchannel
       utils/button
+      utils/colour
       utils/embed
       utils/message
       utils/user

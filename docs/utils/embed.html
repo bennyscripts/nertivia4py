@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Message" href="message.html" /><link rel="prev" title="nertivia4py.utils.Button" href="button.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Message" href="message.html" /><link rel="prev" title="nertivia4py.utils.Colour" href="colour.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.Embed - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.Embed - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,37 +204,46 @@
         <article role="main">
           <section id="nertivia4py-utils-embed">
 <h1>nertivia4py.utils.Embed<a class="headerlink" href="#nertivia4py-utils-embed" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.Embed">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">Embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#ffffff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#ffffff'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Embed" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia HTMLEmbed</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Nertivia HTMLEmbed.</div>
+<div class="line">Stylied to look like Discord’s embeds.</div>
+</div>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>title (str): The title of the embed.
-description (str): The description of the embed.
-colour (str): The colour of the embed.
-color (str): The color of the embed.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>title (str): The title of the embed.</p></li>
+<li><p>description (str): The description of the embed.</p></li>
+<li><p>colour (str): The colour of the embed.</p></li>
+<li><p>color (str): The color of the embed.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Embed.set_footer">
-<span class="sig-name descname"><span class="pre">set_footer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icon_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Embed.set_footer" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the footer of the embed.</p>
+</div></blockquote>
+<section id="set-image-url">
+<h2>set_image(url)<a class="headerlink" href="#set-image-url" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Set the image of the embed.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>text (str): The text of the footer.
-icon_url (str): The url of the icon.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>url (str): The url of the image.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Embed.set_image">
-<span class="sig-name descname"><span class="pre">set_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Embed.set_image" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the image of the embed.</p>
+</div></blockquote>
+</section>
+<section id="set-footer-text-icon-url">
+<h2>set_footer(text, icon_url)<a class="headerlink" href="#set-footer-text-icon-url" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Set the footer of the embed.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>url (str): The url of the image.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>text (str): The text of the footer.</p></li>
+<li><p>icon_url (str): The url of the icon.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -250,14 +260,14 @@ icon_url (str): The url of the icon.</p>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="button.html">
+          <a class="prev-page" href="colour.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">nertivia4py.utils.Button</div>
+                <div class="title">nertivia4py.utils.Colour</div>
                 
               </div>
             </a>
@@ -281,8 +291,28 @@ icon_url (str): The url of the icon.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.Embed</a><ul>
+<li><a class="reference internal" href="#set-image-url">set_image(url)</a></li>
+<li><a class="reference internal" href="#set-footer-text-icon-url">set_footer(text, icon_url)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

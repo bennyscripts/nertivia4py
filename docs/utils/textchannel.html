@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.DMChannel" href="dmchannel.html" /><link rel="prev" title="nertivia4py.utils.Bot" href="bot.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.TextChannel - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.TextChannel - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,99 +204,112 @@
         <article role="main">
           <section id="nertivia4py-utils-textchannel">
 <h1>nertivia4py.utils.TextChannel<a class="headerlink" href="#nertivia4py-utils-textchannel" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">TextChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.TextChannel" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia Text Channel</p>
+<blockquote>
+<div><p>Nertivia server text channel.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>id (int): The ID of the channel.
-name (str): The name of the channel.
-server_id (int): The ID of the server.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the channel.</p></li>
+<li><p>name (str): The name of the channel.</p></li>
+<li><p>server_id (int): The ID of the server.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.TextChannel.delete" title="Permalink to this definition">#</a></dt>
-<dd><p>Deletes the channel.</p>
+</div></blockquote>
+<section id="send-content-embed-buttons">
+<h2>send(content, embed, buttons)<a class="headerlink" href="#send-content-embed-buttons" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Sends a message to the channel.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>content (str): The content of the message.</p></li>
+<li><p>embed (embed.Embed): The embed of the message.</p></li>
+<li><p>buttons (list): A list of buttons to add to the message.</p></li>
+</ul>
+</dd>
+<dt>Aliases:</dt><dd><ul class="simple">
+<li><p>send_message(content, embed, buttons)</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>message.Message: The message that was sent.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.edit">
-<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.TextChannel.edit" title="Permalink to this definition">#</a></dt>
-<dd><p>Edits the channel</p>
+</div></blockquote>
+</section>
+<section id="edit-name">
+<h2>edit(name)<a class="headerlink" href="#edit-name" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Edits the channel</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name of the channel.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>name (str): The new name of the channel.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>dict: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.get_message">
-<span class="sig-name descname"><span class="pre">get_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.TextChannel.get_message" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a message from the channel.</p>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete()<a class="headerlink" href="#delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Deletes the channel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>id (int): The ID of the message.</p>
-</dd>
-<dt>Returns:</dt><dd><p>message.Message: The message.
-None: If the message doesn’t exist.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>dict: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.get_messages">
-<span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nertivia4py.utils.TextChannel.get_messages" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets the messages from the channel.</p>
+</div></blockquote>
+</section>
+<section id="typing">
+<h2>typing()<a class="headerlink" href="#typing" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Tells the channel that the user is typing.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>amount (int): The amount of messages to get.</p>
-</dd>
-<dt>Returns:</dt><dd><p>list: The messages.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>requests response: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="embed.html#nertivia4py.utils.Embed" title="nertivia4py.utils.embed.Embed"><span class="pre">nertivia4py.utils.embed.Embed</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buttons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="message.html#nertivia4py.utils.Message" title="nertivia4py.utils.message.Message"><span class="pre">nertivia4py.utils.message.Message</span></a></span></span><a class="headerlink" href="#nertivia4py.utils.TextChannel.send" title="Permalink to this definition">#</a></dt>
-<dd><p>Sends a message to the channel.</p>
+</div></blockquote>
+</section>
+<section id="get-messages-amount">
+<h2>get_messages(amount)<a class="headerlink" href="#get-messages-amount" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets the messages from the channel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>content (str): The content of the message.
-embed (embed.Embed): The embed of the message.
-buttons (list): A list of buttons to add to the message.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>amount (int): The amount of messages to get.</p></li>
+</ul>
 </dd>
-<dt>Aliases:</dt><dd><p>send_message(content, embed, buttons)</p>
-</dd>
-<dt>Returns:</dt><dd><p>message.Message: The message that was sent.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>list: The messages.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.send_message">
-<span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="embed.html#nertivia4py.utils.Embed" title="nertivia4py.utils.embed.Embed"><span class="pre">nertivia4py.utils.embed.Embed</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buttons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="message.html#nertivia4py.utils.Message" title="nertivia4py.utils.message.Message"><span class="pre">nertivia4py.utils.message.Message</span></a></span></span><a class="headerlink" href="#nertivia4py.utils.TextChannel.send_message" title="Permalink to this definition">#</a></dt>
-<dd><p>Sends a message to the channel.</p>
+</div></blockquote>
+</section>
+<section id="get-message-id">
+<h2>get_message(id)<a class="headerlink" href="#get-message-id" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a message from the channel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>content (str): The content of the message.
-embed (embed.Embed): The embed of the message.
-buttons (list): A list of buttons to add to the message.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the message.</p></li>
+</ul>
 </dd>
-<dt>Aliases:</dt><dd><p>send_message(content, embed, buttons)</p>
-</dd>
-<dt>Returns:</dt><dd><p>message.Message: The message that was sent.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>message.Message: The message.</p></li>
+<li><p>None: If the message doesn’t exist.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.TextChannel.typing">
-<span class="sig-name descname"><span class="pre">typing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.TextChannel.typing" title="Permalink to this definition">#</a></dt>
-<dd><p>Tells the channel that the user is typing.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>requests response: The response of the request.</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -343,8 +357,32 @@ buttons (list): A list of buttons to add to the message.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.TextChannel</a><ul>
+<li><a class="reference internal" href="#send-content-embed-buttons">send(content, embed, buttons)</a></li>
+<li><a class="reference internal" href="#edit-name">edit(name)</a></li>
+<li><a class="reference internal" href="#delete">delete()</a></li>
+<li><a class="reference internal" href="#typing">typing()</a></li>
+<li><a class="reference internal" href="#get-messages-amount">get_messages(amount)</a></li>
+<li><a class="reference internal" href="#get-message-id">get_message(id)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

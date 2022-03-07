@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.Get" href="get.html" /><link rel="prev" title="nertivia4py.utils.Member" href="member.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.utils.get" href="get.html" /><link rel="prev" title="nertivia4py.utils.Member" href="member.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.Server - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.Server - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get.html">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,7 +196,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -203,138 +204,157 @@
         <article role="main">
           <section id="nertivia4py-utils-server">
 <h1>nertivia4py.utils.Server<a class="headerlink" href="#nertivia4py-utils-server" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">Server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_channel_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">banner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Server" title="Permalink to this definition">#</a></dt>
-<dd><p>Nertivia Server</p>
+<blockquote>
+<div><p>Nertivia server.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>id (str): The server’s ID.
-name (str): The server’s name.
-avatar (str): The server’s avatar.
-default_channel_id (str): The server’s default channel ID.
-created (str): The server’s creation date.
-banner (str): The server’s banner.</p>
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>id (str): The server’s ID.</p></li>
+<li><p>name (str): The server’s name.</p></li>
+<li><p>avatar (str): The server’s avatar.</p></li>
+<li><p>default_channel_id (str): The server’s default channel ID.</p></li>
+<li><p>created (str): The server’s creation date.</p></li>
+<li><p>banner (str): The server’s banner.</p></li>
+</ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.ban_member">
-<span class="sig-name descname"><span class="pre">ban_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="user.html#nertivia4py.utils.User" title="nertivia4py.utils.user.User"><span class="pre">nertivia4py.utils.user.User</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.ban_member" title="Permalink to this definition">#</a></dt>
-<dd><p>Bans a member from the server</p>
+</div></blockquote>
+<section id="edit-name">
+<h2>edit(name)<a class="headerlink" href="#edit-name" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Edits the server</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>user (user.User): The user to ban.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>name (str): The new name of the server.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>bool: Whether the request was successful.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>dict: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.create_text_channel">
-<span class="sig-name descname"><span class="pre">create_text_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Server.create_text_channel" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a text channel in the server.</p>
+</div></blockquote>
+</section>
+<section id="delete">
+<h2>delete()<a class="headerlink" href="#delete" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Deletes the server</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The name of the channel.</p>
-</dd>
-<dt>Returns:</dt><dd><p>textchannel.TextChannel: The channel that was created.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>dict: The response of the request.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.delete" title="Permalink to this definition">#</a></dt>
-<dd><p>Deletes the server</p>
+</div></blockquote>
+</section>
+<section id="get-bans">
+<h2>get_bans()<a class="headerlink" href="#get-bans" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a list of banned users from the server</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>list: A list of banned users.</p></li>
+<li><p>None: If the request failed.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.edit">
-<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.edit" title="Permalink to this definition">#</a></dt>
-<dd><p>Edits the server</p>
+</div></blockquote>
+</section>
+<section id="ban-member-user">
+<h2>ban_member(user)<a class="headerlink" href="#ban-member-user" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Bans a member from the server</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): The new name of the server.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>user (user.User): The user to ban.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>bool: Whether the request was successful.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.get_all_channels">
-<span class="sig-name descname"><span class="pre">get_all_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.get_all_channels" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a list of channels from the server</p>
+</div></blockquote>
+</section>
+<section id="kick-member-user">
+<h2>kick_member(user)<a class="headerlink" href="#kick-member-user" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Kicks a member from the server</p>
 <dl class="simple">
-<dt>Aliases:</dt><dd><p>get_all_channels()</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>user (user.User): The user to Kick.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list of channels.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>bool: Whether the request was successful.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.get_all_members">
-<span class="sig-name descname"><span class="pre">get_all_members</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.get_all_members" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a list of members from the server</p>
+</div></blockquote>
+</section>
+<section id="unban-member-user">
+<h2>unban_member(user)<a class="headerlink" href="#unban-member-user" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Unbans a member from the server</p>
 <dl class="simple">
-<dt>Aliases:</dt><dd><p>get_all_members()</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>user (user.User): The user to unban.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list of members.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>bool: Whether the request was successful.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.get_bans">
-<span class="sig-name descname"><span class="pre">get_bans</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nertivia4py.utils.Server.get_bans" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a list of banned users from the server</p>
+</div></blockquote>
+</section>
+<section id="get-members">
+<h2>get_members()<a class="headerlink" href="#get-members" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a list of members from the server</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>list: A list of banned users.
-None: If the request failed.</p>
+<dt>Aliases:</dt><dd><ul class="simple">
+<li><p>get_all_members()</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>list: A list of members.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.get_channels">
-<span class="sig-name descname"><span class="pre">get_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.get_channels" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a list of channels from the server</p>
+</div></blockquote>
+</section>
+<section id="get-channels">
+<h2>get_channels()<a class="headerlink" href="#get-channels" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a list of channels from the server</p>
 <dl class="simple">
-<dt>Aliases:</dt><dd><p>get_all_channels()</p>
+<dt>Aliases:</dt><dd><ul class="simple">
+<li><p>get_all_channels()</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list of channels.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>list: A list of channels.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.get_members">
-<span class="sig-name descname"><span class="pre">get_members</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.get_members" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a list of members from the server</p>
+</div></blockquote>
+</section>
+<section id="create-text-channel-name">
+<h2>create_text_channel(name)<a class="headerlink" href="#create-text-channel-name" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Creates a text channel in the server.</p>
 <dl class="simple">
-<dt>Aliases:</dt><dd><p>get_all_members()</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>name (str): The name of the channel.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list of members.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>textchannel.TextChannel: The channel that was created.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.kick_member">
-<span class="sig-name descname"><span class="pre">kick_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="user.html#nertivia4py.utils.User" title="nertivia4py.utils.user.User"><span class="pre">nertivia4py.utils.user.User</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.kick_member" title="Permalink to this definition">#</a></dt>
-<dd><p>Kicks a member from the server</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>user (user.User): The user to kick.</p>
-</dd>
-<dt>Returns:</dt><dd><p>bool: Whether the request was successful.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Server.unban_member">
-<span class="sig-name descname"><span class="pre">unban_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="user.html#nertivia4py.utils.User" title="nertivia4py.utils.user.User"><span class="pre">nertivia4py.utils.user.User</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#nertivia4py.utils.Server.unban_member" title="Permalink to this definition">#</a></dt>
-<dd><p>Unbans a member from the server</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>user (user.User): The user to unban.</p>
-</dd>
-<dt>Returns:</dt><dd><p>dict: The response of the request.</p>
-</dd>
-</dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -347,7 +367,7 @@ None: If the request failed.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">nertivia4py.utils.Get</div>
+                <div class="title">nertivia4py.utils.get</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -382,8 +402,35 @@ None: If the request failed.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.Server</a><ul>
+<li><a class="reference internal" href="#edit-name">edit(name)</a></li>
+<li><a class="reference internal" href="#delete">delete()</a></li>
+<li><a class="reference internal" href="#get-bans">get_bans()</a></li>
+<li><a class="reference internal" href="#ban-member-user">ban_member(user)</a></li>
+<li><a class="reference internal" href="#kick-member-user">kick_member(user)</a></li>
+<li><a class="reference internal" href="#unban-member-user">unban_member(user)</a></li>
+<li><a class="reference internal" href="#get-members">get_members()</a></li>
+<li><a class="reference internal" href="#get-channels">get_channels()</a></li>
+<li><a class="reference internal" href="#create-text-channel-name">create_text_channel(name)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

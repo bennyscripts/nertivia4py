@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="nertivia4py.gateway.Events" href="../events.html" /><link rel="prev" title="nertivia4py.utils.Server" href="server.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
-        <title>nertivia4py.utils.Get - Nertivia4PY 1.0.1 documentation</title>
+        <title>nertivia4py.utils.get - Nertivia4PY 1.0.6 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
@@ -121,7 +121,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Nertivia4PY 1.0.6 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -147,7 +147,7 @@
     <img class="sidebar-logo" src="../_static/avatar.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">Nertivia4PY 1.0.1 documentation</span>
+  <span class="sidebar-brand-text">Nertivia4PY 1.0.6 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -162,12 +162,13 @@
 <li class="toctree-l1"><a class="reference internal" href="textchannel.html">nertivia4py.utils.TextChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dmchannel.html">nertivia4py.utils.DMChannel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">nertivia4py.utils.Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colour.html">nertivia4py.utils.Colour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embed.html">nertivia4py.utils.Embed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="message.html">nertivia4py.utils.Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user.html">nertivia4py.utils.User</a></li>
 <li class="toctree-l1"><a class="reference internal" href="member.html">nertivia4py.utils.Member</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">nertivia4py.utils.Server</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.Get</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">nertivia4py.utils.get</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../events.html">nertivia4py.gateway.Events</a></li>
 </ul>
 
@@ -195,51 +196,63 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="nertivia4py-utils-get">
-<h1>nertivia4py.utils.Get<a class="headerlink" href="#nertivia4py-utils-get" title="Permalink to this headline">#</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="nertivia4py.utils.Get">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nertivia4py.utils.</span></span><span class="sig-name descname"><span class="pre">Get</span></span><a class="headerlink" href="#nertivia4py.utils.Get" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Get.get_server">
-<span class="sig-name descname"><span class="pre">get_server</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="server.html#nertivia4py.utils.Server" title="nertivia4py.utils.server.Server"><span class="pre">nertivia4py.utils.server.Server</span></a></span></span><a class="headerlink" href="#nertivia4py.utils.Get.get_server" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a Nertivia server.</p>
+<h1>nertivia4py.utils.get<a class="headerlink" href="#nertivia4py-utils-get" title="Permalink to this headline">#</a></h1>
+<p>Methods to get data from the Nertivia API.</p>
+<section id="get-server-id">
+<h2>get_server(id)<a class="headerlink" href="#get-server-id" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a Nertivia server.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>id (int): The ID of the server.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the server.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>server.Server: The server.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>server.Server: The server.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Get.get_text_channel">
-<span class="sig-name descname"><span class="pre">get_text_channel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="textchannel.html#nertivia4py.utils.TextChannel" title="nertivia4py.utils.textchannel.TextChannel"><span class="pre">nertivia4py.utils.textchannel.TextChannel</span></a></span></span><a class="headerlink" href="#nertivia4py.utils.Get.get_text_channel" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a Nertivia text channel.</p>
+</div></blockquote>
+</section>
+<section id="get-text-channel-id">
+<h2>get_text_channel(id)<a class="headerlink" href="#get-text-channel-id" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a Nertivia text channel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>id (int): The ID of the text channel.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the text channel.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>textchannel.TextChannel: The text channel.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>textchannel.TextChannel: The text channel.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="nertivia4py.utils.Get.get_user">
-<span class="sig-name descname"><span class="pre">get_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="user.html#nertivia4py.utils.User" title="nertivia4py.utils.user.User"><span class="pre">nertivia4py.utils.user.User</span></a></span></span><a class="headerlink" href="#nertivia4py.utils.Get.get_user" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets a Nertivia user.</p>
+</div></blockquote>
+</section>
+<section id="get-user-id">
+<h2>get_user(id)<a class="headerlink" href="#get-user-id" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Gets a Nertivia user.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>id (int): The ID of the user.</p>
+<dt>Args:</dt><dd><ul class="simple">
+<li><p>id (int): The ID of the user.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>user.User: The user.</p>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p>user.User: The user.</p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-</dd></dl>
+</div></blockquote>
+</section>
 </section>
 
         </article>
@@ -287,8 +300,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">nertivia4py.utils.get</a><ul>
+<li><a class="reference internal" href="#get-server-id">get_server(id)</a></li>
+<li><a class="reference internal" href="#get-text-channel-id">get_text_channel(id)</a></li>
+<li><a class="reference internal" href="#get-user-id">get_user(id)</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

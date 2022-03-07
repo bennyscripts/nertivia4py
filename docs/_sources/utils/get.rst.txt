@@ -1,5 +1,34 @@
-nertivia4py.utils.Get
+nertivia4py.utils.get
 =====================
+Methods to get data from the Nertivia API.
 
-.. autoclass:: nertivia4py.utils.Get
-    :members:
+get_server(id)
+--------------
+    Gets a Nertivia server.
+
+    Args:
+        * id (int): The ID of the server.
+
+    Returns:
+        * server.Server: The server.
+
+
+get_text_channel(id)
+--------------------
+    Gets a Nertivia text channel.
+
+    Args:
+        * id (int): The ID of the text channel.
+
+    Returns:
+        * textchannel.TextChannel: The text channel.
+
+get_user(id)
+------------
+    Gets a Nertivia user.
+
+    Args:
+        * id (int): The ID of the user.
+            
+    Returns:
+        * user.User: The user.

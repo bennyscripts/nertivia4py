@@ -1,5 +1,7 @@
 nertivia4py.utils.Button
 ========================
+    Nertivia message button.
 
-.. autoclass:: nertivia4py.utils.Button
-    :members:
+    Attributes:
+        * name (str): The name of the button.
+        * id (int): The id of the button.
