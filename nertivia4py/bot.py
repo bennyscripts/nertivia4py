@@ -2,9 +2,12 @@ import socketio
 import shlex
 import requests
 import importlib
+import inspect
 
 from .gateway import events
+
 from .commands import command
+from .commands import cog
 
 from .utils import user
 from .utils import extra
@@ -160,13 +163,14 @@ class Bot:
         self.commands.append(command.Command(name, description, usage, aliases, callback))
         self.socket.on(events.Events().get_event("on_message"), self._on_message_event_handler)
 
-    def load_commands(self, lib_path, commands_class: str = "Commands"):
+    def load_commands(self, **kwargs):
         """
         Load commands from a separate file.
 
         Args:
             lib_path (str): The path to the file. (example: commands.general)
             commands_class (str): The name of the class in the file. (example: Commands)
+            cog_name (str): The name of the cog. (example: general)
 
         Aliases:
             add_commands(lib_path, commands_class)
@@ -174,12 +178,17 @@ class Bot:
         Raises:
             AttributeError: If the class is not found.
         """
+    
+        if "lib_path" in kwargs:  lib_path = kwargs["lib_path"]
+        else: raise AttributeError("lib_path is required.")
+
+        if "commands_class" in kwargs: commands_class = kwargs["commands_class"]
+        else: raise AttributeError("commands_class is required.")
 
         lib = importlib.import_module(lib_path)
         commands_class = getattr(lib, commands_class)
-
-        commands = commands_class(self)
-        commands.register()
+        class_instance = commands_class(self)
+        class_instance.register()
 
     def event(self, *args):
         event_name = args[0].__name__
