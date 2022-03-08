@@ -120,7 +120,7 @@ Raises:
                         except Exception as e:
                             print(e)
 
-        if is_a_command:
+        if is_a_command and command_can_be_run:
             if command not in [cmd.name for cmd in self.commands]:
                 if self.other_settings["on_command_error_callback"] is not None:
                     self.other_settings["on_command_error_callback"](msg, exceptions.CommandNotFound(f"Command {command} not found."))
