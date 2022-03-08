@@ -88,15 +88,16 @@ Raises:
         if msg.content.startswith(self.command_prefix):
             is_a_command = True
 
+        if is_a_command:
+            command = msg.content.replace(self.command_prefix, "")
+            args = shlex.split(command)
+            command = args[0]
+            args.pop(0)
+
         if command_can_be_run:
             if is_a_command:
-                command = msg.content.replace(self.command_prefix, "")
-                args = shlex.split(command)
-                command = args[0]
-                args.pop(0)
-
                 for cmd in self.commands:
-                    if cmd.name == command or command in cmd.aliases:
+                    if command == cmd.name or command in cmd.aliases:
                         callback = cmd.get_callback()
 
                         try: 
@@ -119,13 +120,10 @@ Raises:
                         except Exception as e:
                             print(e)
 
-                    else:
-                        if self.other_settings["on_command_error_callback"] is not None:
-
-                            command_tried = msg.content.replace(self.command_prefix, "")
-                            command_tried = shlex.split(command_tried)[0]
-
-                            self.other_settings["on_command_error_callback"](msg, exceptions.CommandNotFound(f"Command {command_tried} not found."))
+        if is_a_command:
+            if command not in [cmd.name for cmd in self.commands]:
+                if self.other_settings["on_command_error_callback"] is not None:
+                    self.other_settings["on_command_error_callback"](msg, exceptions.CommandNotFound(f"Command {command} not found."))
 
     def register_command(self, **kwargs) -> None:
         """
