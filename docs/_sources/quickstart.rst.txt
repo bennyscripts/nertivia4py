@@ -37,7 +37,7 @@ A minimal bot
 
     | 1. First we import the library.
     | 2. Then we create an instance of nertivia4py.Bot_.
-    .. _nertivia4py.Bot: /bot.html
+    .. _nertivia4py.Bot: /docs/bot.html
     | 3. We then define a function that will be called when the bot is ready using the ``on_ready`` event.
     | 4. We then define a command that will respond to the command ``!ping`` with ``Pong!``.
     | 5. Finally we run the bot using the ``run`` method.
