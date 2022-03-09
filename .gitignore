@@ -1,0 +1,15 @@
+env/*
+nertivia4py/__pycache__/*
+nertivia4py/gateway/__pycache__/*
+nertivia4py/utils/__pycache__/*
+nertivia4py/commands/__pycache__/*
+testing.py
+test2.py
+testing/*
+test.py
+selfbot.py
+@everyone*
+dist/*
+*.egg-info
+docs-2/*
+build/*

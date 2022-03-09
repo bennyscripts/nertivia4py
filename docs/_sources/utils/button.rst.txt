@@ -1,0 +1,7 @@
+nertivia4py.utils.Button
+========================
+    Nertivia message button.
+
+    Attributes:
+        * name (str): The name of the button.
+        * id (int): The id of the button.

@@ -1,0 +1,45 @@
+==========
+Quickstart
+==========
+    | This section contains a walkthrough of the basic functionality of Nertivia4PY.
+    | It assumes you have already installed the library, if you haven't please read the installation instructions.
+
+--------
+Examples
+--------
+    | Find a list of all the example bots and code snippits in the github repo or from the link below.
+    | Or you can follow the steps below to create your first bot.
+    | Examples: https://github.com/bentettmar/nertivia4py/tree/main/examples
+
+'''''''''''''
+A minimal bot
+'''''''''''''
+    | Lets make a bot that responds to the command ``!ping`` with ``Pong!``
+    |
+
+    .. code-block:: python
+        :caption: example_bot.py
+        :name: example_bot-py
+
+        import nertivia4py
+
+        bot = nertivia4py.Bot("!")
+
+        @bot.event
+        def on_ready(event):
+            print("Bot is ready!")
+
+        @bot.command(name="ping")
+        def ping(msg):
+            msg.channel.send("Pong!")
+
+        bot.run("YOUR_BOT_TOKEN")
+
+    | 1. First we import the library.
+    | 2. Then we create an instance of nertivia4py.Bot_.
+    .. _nertivia4py.Bot: /docs/bot.html
+    | 3. We then define a function that will be called when the bot is ready using the ``on_ready`` event.
+    | 4. We then define a command that will respond to the command ``!ping`` with ``Pong!``.
+    | 5. Finally we run the bot using the ``run`` method.
+    |
+    | If all goes well you should see the bot respond to the command ``!ping`` with ``Pong!`` in your chat.

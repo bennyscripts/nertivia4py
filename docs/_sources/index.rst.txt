@@ -1,0 +1,34 @@
+Nertivia4PY
+===========
+   | nertivia4py is a python wrapper for the Nertivia API.    
+   | It is very easy to use and understand.   
+   | Support server : https://nertivia.net/i/nertivia4py
+
+Installation
+~~~~~~~~~~~~
+   | Install nertivia4py by running
+   
+   .. code-block:: bash
+   
+      $ pip install nertivia4py
+
+
+Navigation
+~~~~~~~~~~
+   .. toctree::
+      :maxdepth: 2
+
+      quickstart
+      bot
+      utils/bot
+      utils/textchannel
+      utils/dmchannel
+      utils/button
+      utils/colour
+      utils/embed
+      utils/message
+      utils/user
+      utils/member
+      utils/server
+      utils/get
+      events
