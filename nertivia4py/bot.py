@@ -101,10 +101,12 @@ Raises:
                         callback = cmd.get_callback()
 
                         try: 
-                            callback(msg, args)
+                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg, args)
+                            else: callback(msg, args)
 
                         except TypeError: 
-                            callback(msg)
+                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg)
+                            else: callback(msg)
 
                         except Exception as e: 
                             if self.other_settings["on_command_error_callback"] is not None:
@@ -148,15 +150,16 @@ Raises:
         aliases = kwargs["aliases"] if "aliases" in kwargs else []
         callback = kwargs["callback"] or kwargs["func"] or kwargs["function"]
         name = kwargs["name"] if "name" in kwargs else callback.__name__
+        registered_with_function = kwargs["registered_with_function"] if "registered_with_function" in kwargs else True
 
         for cmd in self.commands:
             if name in aliases:
                 raise ValueError("Command name and aliases cannot be the same.")
 
             if cmd.name == name:
-                raise exceptions.CommandAlreadyExists("Command name already exists.")
+                raise exceptions.CommandAlreadyExists(f"Command name {name} already exists.")
 
-        self.commands.append(command.Command(name, description, usage, aliases, callback))
+        self.commands.append(command.Command(name, description, usage, aliases, callback, registered_with_function))
         self.socket.on(events.Events().get_event("on_message"), self._on_message_event_handler)
 
     def load_commands(self, **kwargs):

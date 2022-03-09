@@ -9,3 +9,4 @@ https://github.com/bentettmar/nertivia4py
 from .bot import *
 
 from .utils import get
+from .commands import Cog
