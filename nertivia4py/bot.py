@@ -145,12 +145,12 @@ Raises:
 - CommandAlreadyExists: If the command already exists.
         """
 
-        description = kwargs["description"] if "description" in kwargs else ""
-        usage = kwargs["usage"] if "usage" in kwargs else ""
-        aliases = kwargs["aliases"] if "aliases" in kwargs else []
+        description = kwargs.get("description", "")
+        usage = kwargs.get("usage", "")
+        aliases = kwargs.get("aliases", [])
         callback = kwargs["callback"] or kwargs["func"] or kwargs["function"]
-        name = kwargs["name"] if "name" in kwargs else callback.__name__
-        registered_with_function = kwargs["registered_with_function"] if "registered_with_function" in kwargs else True
+        name = kwargs.get("name", callback.__name__)
+        registered_with_function = kwargs.get("registered_with_function", True)
 
         for cmd in self.commands:
             if name in aliases:
