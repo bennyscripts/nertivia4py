@@ -30,7 +30,7 @@ Attributes:
             self.tag = response.json()["user"]["tag"]
             try:
                 self.created = response.json()["user"]["created"]
-            except:
+            except Exception:
                 pass
             try:
                 self.blocked = response.json()["isBlocked"]
