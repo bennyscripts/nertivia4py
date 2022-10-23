@@ -16,13 +16,15 @@ Attributes:
 - creator (user.User): The creator of the bot.
     """
 
-    def __init__(self, id, username="", tag="", avatar="", commands=[], creator = None) -> None:
+    def __init__(self, id, username="", tag="", avatar="", commands=None, creator = None) -> None:
+        if commands is None:
+            commands = []
         if username == "" or tag == "" or avatar == "" or commands == [] or creator is None:
             response = requests.get(
                 f"https://nertivia.net/api/bots/{id}",
                 headers={"Authorization": extra.Extra.getauthtoken()}
             )
-            
+
             self.id = response.json()["id"]
             self.username = response.json()["username"]
             self.tag = response.json()["tag"]
