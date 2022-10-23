@@ -25,7 +25,7 @@ Attributes:
             self.avatar = response.json()["user"]["avatar"]
             try:
                 self.banner = response.json()["user"]["banner"]
-            except:
+            except Exception:
                 pass
             self.username = response.json()["user"]["username"]
             self.tag = response.json()["user"]["tag"]
