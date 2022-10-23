@@ -145,12 +145,12 @@ Returns:
                 author = user.User(item["creator"]["id"], item["creator"]["username"], item["creator"]["tag"], item["creator"]["avatar"])
                 message = message.Message(item["messageID"], self.id, author, item["message"], item["created"])
                 messages.append(message)
-            except:
+            except Exception:
                 pass
 
             if index == amount:
                 break
-        
+
         return messages
 
     def get_message(self, id):
