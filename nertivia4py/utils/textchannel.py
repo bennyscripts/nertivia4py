@@ -1,3 +1,4 @@
+import contextlib
 import requests
 
 from . import message
@@ -141,13 +142,10 @@ Returns:
 
         for item in response.json()["messages"]:
             index += 1
-            try:
+            with contextlib.suppress(Exception):
                 author = user.User(item["creator"]["id"], item["creator"]["username"], item["creator"]["tag"], item["creator"]["avatar"])
                 message = message.Message(item["messageID"], self.id, author, item["message"], item["created"])
                 messages.append(message)
-            except Exception:
-                pass
-
             if index == amount:
                 break
 
