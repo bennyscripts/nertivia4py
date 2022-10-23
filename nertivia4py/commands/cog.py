@@ -7,7 +7,7 @@ class Cog:
 
     def add_command(self, **kwargs):
         description = kwargs.get("description", "")
-        usage = kwargs["usage"] if "usage" in kwargs else ""
+        usage = kwargs.get("usage", "")
         aliases = kwargs["aliases"] if "aliases" in kwargs else []
         name = kwargs["name"] if "name" in kwargs else "None"
         callback = kwargs["callback"] if "callback" in kwargs else None
