@@ -1,3 +1,4 @@
+import contextlib
 import requests
 
 from . import embed
@@ -23,10 +24,8 @@ Attributes:
             response = requests.get(f"https://nertivia.net/api/user/{id}", headers={"Authorization": extra.Extra.getauthtoken()})
             self.id = response.json()["user"]["id"]
             self.avatar = response.json()["user"]["avatar"]
-            try:
+            with contextlib.suppress(Exception):
                 self.banner = response.json()["user"]["banner"]
-            except Exception:
-                pass
             self.username = response.json()["user"]["username"]
             self.tag = response.json()["user"]["tag"]
             try:
