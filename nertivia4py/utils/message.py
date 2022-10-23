@@ -39,7 +39,7 @@ Attributes:
             # check if response json has a key called message and if it does then set self.content to that value
             try:
                 self.content = response.json()["message"]
-            except:
+            except Exception:
                 self.content = ""
             try:
                 self.created = response.json()["created"]
