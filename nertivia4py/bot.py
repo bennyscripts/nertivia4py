@@ -73,8 +73,6 @@ Raises:
     def _on_message_event_handler(self, event):
         msg = message.Message(event["message"]["messageID"], event["message"]["channelId"])
         command_can_be_run = False
-        is_a_command = False
-        
         if self.other_settings["on_message_callback"] is not None:
             self.other_settings["on_message_callback"](msg)
 
@@ -85,9 +83,7 @@ Raises:
             if msg.creator.id != self.user.id:
                 command_can_be_run = True
 
-        if msg.content.startswith(self.command_prefix):
-            is_a_command = True
-
+        is_a_command = bool(msg.content.startswith(self.command_prefix))
         if is_a_command:
             command = msg.content.replace(self.command_prefix, "")
             args = shlex.split(command)
