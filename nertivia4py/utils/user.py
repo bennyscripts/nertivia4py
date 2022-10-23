@@ -28,10 +28,8 @@ Attributes:
                 self.banner = response.json()["user"]["banner"]
             self.username = response.json()["user"]["username"]
             self.tag = response.json()["user"]["tag"]
-            try:
+            with contextlib.suppress(Exception):
                 self.created = response.json()["user"]["created"]
-            except Exception:
-                pass
             try:
                 self.blocked = response.json()["isBlocked"]
             except:
