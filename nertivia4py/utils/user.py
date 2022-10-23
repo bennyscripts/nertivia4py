@@ -30,10 +30,8 @@ Attributes:
             self.tag = response.json()["user"]["tag"]
             with contextlib.suppress(Exception):
                 self.created = response.json()["user"]["created"]
-            try:
+            with contextlib.suppress(Exception):
                 self.blocked = response.json()["isBlocked"]
-            except Exception:
-                pass
         else:
             self.id = id
             self.avatar = avatar
