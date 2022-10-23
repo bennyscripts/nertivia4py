@@ -166,10 +166,6 @@ Returns:
         """
 
         messages = self.getMessages()
-        for message in messages:
-            if message.id == id:
-                return message
-        
-        return None
+        return next((message for message in messages if message.id == id), None)
 
     send_message = send
