@@ -38,10 +38,7 @@ Returns:
         if embed is not None:
             body["htmlEmbed"] = embed.json
         if buttons != None:
-            body["buttons"] = []
-            for button in buttons:
-                body["buttons"].append(button.json)
-
+            body["buttons"] = [button.json for button in buttons]
         response = requests.post(f"https://nertivia.net/api/messages/channels/{self.id}", headers={"authorization": extra.Extra.getauthtoken()}, json=body)
         return response.json()
 
