@@ -172,10 +172,7 @@ Returns:
     def _get_members_handler(self, event):
         data = ast.literal_eval(str(event))
 
-        members = []
-        for servermember in data["serverMembers"]:
-            if servermember["server_id"] == str(self.id):
-                members.append(servermember)
+        members = [servermember for servermember in data["serverMembers"] if servermember["server_id"] == str(self.id)]
 
         self.members = members
 
