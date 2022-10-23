@@ -17,7 +17,6 @@ class Bot:
 Nertivia Gateway Client  
 This is the client that handles all of the events from the Nertivia Gateway.  
 And it also handles all of the commands that are sent to the bot.  
-
 Attributes:
 - command_prefix (str): The prefix that is used to identify commands.
 - self_bot (bool): Whether or not the bot is a self bot.
@@ -46,10 +45,8 @@ Attributes:
     def run(self, token) -> None:
         """
 Run the client  
-
 Args:
 - token (str): The token that is used to authenticate the bot.
-
 Raises:
 - InvalidToken: If the token is invalid.
         """
@@ -74,7 +71,7 @@ Raises:
         msg = message.Message(event["message"]["messageID"], event["message"]["channelId"])
         command_can_be_run = False
         is_a_command = False
-        
+
         if self.other_settings["on_message_callback"] is not None:
             self.other_settings["on_message_callback"](msg)
 
@@ -94,33 +91,32 @@ Raises:
             command = args[0]
             args.pop(0)
 
-        if command_can_be_run:
-            if is_a_command:
-                for cmd in self.commands:
-                    if command == cmd.name or command in cmd.aliases:
-                        callback = cmd.get_callback()
+        if command_can_be_run and is_a_command:
+            for cmd in self.commands:
+                if command == cmd.name or command in cmd.aliases:
+                    callback = cmd.get_callback()
 
-                        try: 
-                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg, args)
-                            else: callback(msg, args)
+                    try: 
+                        if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg, args)
+                        else: callback(msg, args)
 
-                        except TypeError: 
-                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg)
-                            else: callback(msg)
+                    except TypeError: 
+                        if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg)
+                        else: callback(msg)
 
-                        except Exception as e: 
-                            if self.other_settings["on_command_error_callback"] is not None:
-                                self.other_settings["on_command_error_callback"](msg, str(e))
+                    except Exception as e: 
+                        if self.other_settings["on_command_error_callback"] is not None:
+                            self.other_settings["on_command_error_callback"](msg, str(e))
 
-                            else:
-                                raise exceptions.CommandError(str(e)) from e
+                        else:
+                            raise exceptions.CommandError(str(e)) from e
 
-                        try:
-                            if self.other_settings["on_command_callback"] is not None:
-                                self.other_settings["on_command_callback"](msg, cmd)
+                    try:
+                        if self.other_settings["on_command_callback"] is not None:
+                            self.other_settings["on_command_callback"](msg, cmd)
 
-                        except Exception as e:
-                            print(e)
+                    except Exception as e:
+                        print(e)
 
         if is_a_command and command_can_be_run and command not in [cmd.name for cmd in self.commands] and self.other_settings["on_command_error_callback"] is not None:
             self.other_settings["on_command_error_callback"](msg, exceptions.CommandNotFound(f"Command {command} not found."))
@@ -128,17 +124,14 @@ Raises:
     def register_command(self, **kwargs) -> None:
         """
 Register a command.  
-
 Args:
 - name (str): The name of the command.
 - description (str): The description of the command.
 - usage (str): The usage of the command.
 - aliases (list): A list of aliases for the command.
 - callback (func): The callback function for the command. / What the command does.
-
 Aliases:
 - add_command(**kwargs)
-
 Raises:
 - CommandAlreadyExists: If the command already exists.
         """
@@ -163,14 +156,11 @@ Raises:
     def load_commands(self, **kwargs):
         """
 Load commands from a separate file.
-
 Args:
 - lib_path (str): The path to the file. (example: commands.general)
 - commands_class (str): The name of the class in the file. (example: Commands)
-
 Aliases:
 - add_commands(lib_path, commands_class)
-
 Raises:
 - AttributeError: If the class is not found.
         """
