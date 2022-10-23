@@ -11,7 +11,7 @@ class Cog:
         aliases = kwargs.get("aliases", [])
         name = kwargs.get("name", "None")
         callback = kwargs.get("callback")
-        registered_with_function = kwargs["registered_with_function"] if "registered_with_function" in kwargs else True
+        registered_with_function = kwargs.get("registered_with_function", True)
 
         self.bot.register_command(**kwargs)
         self.commands.append(Command(name, description, usage, aliases, callback, registered_with_function=registered_with_function))
