@@ -32,7 +32,7 @@ Attributes:
                 self.created = response.json()["user"]["created"]
             try:
                 self.blocked = response.json()["isBlocked"]
-            except:
+            except Exception:
                 pass
         else:
             self.id = id
