@@ -17,7 +17,7 @@ Returns:
 
         return server.Server(self)
 
-    def get_text_channel(id) -> textchannel.TextChannel:
+    def get_text_channel(self) -> textchannel.TextChannel:
         """
 Gets a Nertivia text channel.
 
@@ -28,7 +28,7 @@ Returns:
 - textchannel.TextChannel: The text channel.
         """
 
-        return textchannel.TextChannel(id)
+        return textchannel.TextChannel(self)
 
     def get_user(id) -> user.User:
         """
