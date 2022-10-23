@@ -51,9 +51,7 @@ Returns:
     dict: The response of the request.
         """
 
-        response = requests.delete(
-            "https://nertivia.net/api/bots/" + str(self.id),
-            headers={"Authorization": self.token}
-        )
+        response = requests.delete(f"https://nertivia.net/api/bots/{str(self.id)}", headers={"Authorization": self.token})
+
 
         return response.json()
