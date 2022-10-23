@@ -116,12 +116,10 @@ Returns:
 - requests response: The response of the request.
         """
 
-        response = requests.post(
+        return requests.post(
             f"https://nertivia.net/api/messages/{self.id}/typing",
             headers={"authorization": extra.Extra.getauthtoken()}
         )
-
-        return response
 
     def get_messages(self, amount: int = 1) -> list:
         """
