@@ -30,7 +30,7 @@ Returns:
 
         return textchannel.TextChannel(self)
 
-    def get_user(id) -> user.User:
+    def get_user(self) -> user.User:
         """
 Gets a Nertivia user.
 
@@ -41,4 +41,4 @@ Returns:
 - user.User: The user.
         """
 
-        return user.User(id)
+        return user.User(self)
