@@ -89,33 +89,32 @@ Raises:
             command = args[0]
             args.pop(0)
 
-        if command_can_be_run:
-            if is_a_command:
-                for cmd in self.commands:
-                    if command == cmd.name or command in cmd.aliases:
-                        callback = cmd.get_callback()
+        if command_can_be_run and is_a_command:
+            for cmd in self.commands:
+                if command == cmd.name or command in cmd.aliases:
+                    callback = cmd.get_callback()
 
-                        try: 
-                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg, args)
-                            else: callback(msg, args)
+                    try: 
+                        if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg, args)
+                        else: callback(msg, args)
 
-                        except TypeError: 
-                            if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg)
-                            else: callback(msg)
+                    except TypeError: 
+                        if cmd.cog is not None and cmd.registered_with_function is False: callback(cmd.cog, msg)
+                        else: callback(msg)
 
-                        except Exception as e: 
-                            if self.other_settings["on_command_error_callback"] is not None:
-                                self.other_settings["on_command_error_callback"](msg, str(e))
+                    except Exception as e: 
+                        if self.other_settings["on_command_error_callback"] is not None:
+                            self.other_settings["on_command_error_callback"](msg, str(e))
 
-                            else:
-                                raise exceptions.CommandError(str(e))
+                        else:
+                            raise exceptions.CommandError(str(e))
 
-                        try:
-                            if self.other_settings["on_command_callback"] is not None:
-                                self.other_settings["on_command_callback"](msg, cmd)
+                    try:
+                        if self.other_settings["on_command_callback"] is not None:
+                            self.other_settings["on_command_callback"](msg, cmd)
 
-                        except Exception as e:
-                            print(e)
+                    except Exception as e:
+                        print(e)
 
         if is_a_command and command_can_be_run:
             if command not in [cmd.name for cmd in self.commands]:
