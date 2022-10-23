@@ -113,7 +113,7 @@ Raises:
                                 self.other_settings["on_command_error_callback"](msg, str(e))
 
                             else:
-                                raise exceptions.CommandError(str(e))
+                                raise exceptions.CommandError(str(e)) from e
 
                         try:
                             if self.other_settings["on_command_callback"] is not None:
