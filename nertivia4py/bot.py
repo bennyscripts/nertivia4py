@@ -78,9 +78,8 @@ Raises:
         if self.self_bot:
             if msg.creator.id == self.user.id:
                 command_can_be_run = True
-        else:
-            if msg.creator.id != self.user.id:
-                command_can_be_run = True
+        elif msg.creator.id != self.user.id:
+            command_can_be_run = True
 
         if msg.content.startswith(self.command_prefix):
             is_a_command = True
