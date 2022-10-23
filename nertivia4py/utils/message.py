@@ -73,7 +73,7 @@ Returns:
 - Message: The message that was sent.
         """
 
-        body={"message": f"<m{self.id}>"+content}
+        body = {"message": f"<m{self.id}>{content}"}
         if embed != None:
             body["htmlEmbed"] = embed.json
         if buttons != None:
