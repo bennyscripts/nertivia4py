@@ -43,7 +43,7 @@ Attributes:
                 self.content = ""
             try:
                 self.created = response.json()["created"]
-            except:
+            except Exception:
                 self.created = ""
             try:
                 self.creator = user.User(response.json()["creator"]["id"])
