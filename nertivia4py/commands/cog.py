@@ -8,8 +8,8 @@ class Cog:
     def add_command(self, **kwargs):
         description = kwargs.get("description", "")
         usage = kwargs.get("usage", "")
-        aliases = kwargs["aliases"] if "aliases" in kwargs else []
-        name = kwargs["name"] if "name" in kwargs else "None"
+        aliases = kwargs.get("aliases", [])
+        name = kwargs.get("name", "None")
         callback = kwargs["callback"] if "callback" in kwargs else None
         registered_with_function = kwargs["registered_with_function"] if "registered_with_function" in kwargs else True
 
