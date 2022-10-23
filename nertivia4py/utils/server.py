@@ -101,18 +101,16 @@ Returns:
             headers={"authorization": extra.Extra.getauthtoken()}
         )
 
-        if "missing permission" not in response.text.lower():
-            bans = []
-
-            for user3 in response.json():
-                user4 = user3["user"]
-                user2 = user.User(user["id"])
-                bans.append(user2)
-
-            return bans
-        
-        else:
+        if "missing permission" in response.text.lower():
             return False
+        bans = []
+
+        for user3 in response.json():
+            user4 = user3["user"]
+            user2 = user.User(user["id"])
+            bans.append(user2)
+
+        return bans
 
     def ban_member(self, user: user.User) -> bool:
         """
