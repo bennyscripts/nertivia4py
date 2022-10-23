@@ -4,7 +4,7 @@ from . import user
 
 class Get:
     
-    def get_server(id) -> server.Server:
+    def get_server(self) -> server.Server:
         """
 Gets a Nertivia server.
 
@@ -15,7 +15,7 @@ Returns:
 - server.Server: The server.
         """
 
-        return server.Server(id)
+        return server.Server(self)
 
     def get_text_channel(id) -> textchannel.TextChannel:
         """
