@@ -34,16 +34,15 @@ Attributes:
             self.avatar = response.json()["avatar"]
             self.default_channel_id = response.json()["default_channel_id"]
             self.created = response.json()["created"]
-            self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
-
         else:
             self.id = id
             self.name = name
             self.avatar = avatar
             self.default_channel_id = default_channel_id
             self.created = created
-            self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
-            # self.banner = banner
+                # self.banner = banner
+
+        self.created_at = datetime.datetime.fromtimestamp(int(self.created) / 1000)
 
         self.members = []
         self.channels = []
