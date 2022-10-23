@@ -129,10 +129,7 @@ Returns:
             headers={"authorization": extra.Extra.getauthtoken()}
         )
 
-        if "missing permission" not in response.text.lower():
-            return True
-        else:
-            return False
+        return "missing permission" not in response.text.lower()
 
     def kick_member(self, user: user.User) -> bool:
         """
