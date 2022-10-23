@@ -3,9 +3,7 @@ class GeneralCommands:
         self.bot = bot
 
     def echo_command(self, message, args):
-        text = " ".join(args)
-
-        if text:
+        if text := " ".join(args):
             message.channel.send(text)
         else:
             message.reply("You need to specify some text.")
